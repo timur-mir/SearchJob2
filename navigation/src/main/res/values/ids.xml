@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="frag_cont" type="id"/>
+    <item name="main_login_host" type="id"/>
+    <item name="vacancies_search_host" type="id"/>
+</resources>

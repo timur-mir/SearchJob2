@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+<style name="LoginSecurityCode">
+    <item name="android:layout_width">40dp</item>
+    <item name="android:layout_height">48dp</item>
+    <item name="android:layout_marginEnd">8dp</item>
+    <item name="android:layout_marginBottom">4dp</item>
+    <item name="android:layout_marginStart">8dp</item>
+    <item name="android:layout_gravity">center</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:background">@drawable/seq_shape</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:textColorHint">#50FAF5F5</item>
+    <item name="android:textColor">#fff</item>
+    <item name="android:hint">"*</item>
+    <item name="android:importantForAutofill" tools:ignore="NewApi">no</item>
+    <item name="android:inputType">numberDecimal</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:maxLength">1</item>
+</style>
+</resources>

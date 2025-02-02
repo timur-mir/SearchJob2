@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/authorization_confirmation_navigation"
+    app:startDestination="@id/authorizationFragment">
+
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="home.product.authorization.AuthorizationFragment"
+        android:label="AuthorizationFragment" >
+        <action
+            android:id="@+id/action_authorizationFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="home.product.authorization.ConfirmationFragment"
+        android:label="ConfirmationFragment">
+        <action
+            android:id="@id/action_confirmationFragment_to_searchFragment"
+            app:destination="@id/searchFragment2"
+            app:popUpTo="@id/authorization_confirmation_navigation" />
+    <argument
+        android:name="emailText"
+        app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="home.product.vacancies.presentation.SearchFragment"
+        android:label="SearchFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/mainLoginFragment"
+        android:name="home.product.authorization.MainLoginFragment"
+        android:label="MainLoginFragment" />
+
+</navigation>
