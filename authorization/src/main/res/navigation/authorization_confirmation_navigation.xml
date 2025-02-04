@@ -16,19 +16,24 @@
         android:id="@+id/confirmationFragment"
         android:name="home.product.authorization.ConfirmationFragment"
         android:label="ConfirmationFragment">
-        <action
-            android:id="@id/action_confirmationFragment_to_searchFragment"
-            app:destination="@id/searchFragment2"
-            app:popUpTo="@id/authorization_confirmation_navigation" />
+<!--        <action-->
+<!--            android:id="@id/action_confirmationFragment_to_searchFragment"-->
+<!--            app:destination="@id/searchFragment2"-->
+<!--            app:popUpTo="@id/authorization_confirmation_navigation" />-->
+<!--                <action-->
+<!--                    android:id="@+id/action_confirmationFragment_to_searchFragment"-->
+<!--                    app:destination="@id/searchFragment2"/>-->
+
     <argument
         android:name="emailText"
         app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/searchFragment2"
-        android:name="home.product.vacancies.presentation.SearchFragment"
-        android:label="SearchFragment" >
-    </fragment>
+<!--    <include app:graph="@navigation/search_vacancies_navigation" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/searchFragment2"-->
+<!--        android:name="home.product.vacancies.presentation.SearchFragment"-->
+<!--        android:label="SearchFragment" >-->
+<!--    </fragment>-->
     <fragment
         android:id="@+id/mainLoginFragment"
         android:name="home.product.authorization.MainLoginFragment"

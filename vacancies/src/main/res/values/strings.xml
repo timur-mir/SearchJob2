@@ -1,4 +1,7 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vacancy_near">Вакансии рядом с вами</string>
+    <string name="rise_resume">Поднять резюме в поиске</string>
+    <string name="rise">Поднять</string>
 </resources>

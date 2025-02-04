@@ -35,8 +35,9 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+   // dynamicFeatures = [':vacancies']
     buildFeatures {
-        buildConfig = true
+      //  buildConfig = true
         viewBinding true
     }
 }

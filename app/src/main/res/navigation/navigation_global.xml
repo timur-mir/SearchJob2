@@ -7,5 +7,21 @@
         android:id="@+id/mainLoginFragment"
         android:name="home.product.authorization.MainLoginFragment"
         android:label="MainLoginFragment" />
+<!--        <fragment-->
+<!--            android:id="@id/confirmationFragment"-->
+<!--            android:name="home.product.authorization.ConfirmationFragment"-->
+<!--            android:label="ConfirmationFragment">-->
+<!--    &lt;!&ndash;        <action&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@id/action_confirmationFragment_to_searchFragment"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:destination="@id/searchFragment2"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:popUpTo="@id/authorization_confirmation_navigation" />&ndash;&gt;-->
+<!--                    <action-->
+<!--                        android:id="@id/action_confirmationFragment_to_vacanciesFeature"-->
+<!--                        app:destination="@id/search_vacancies_navigation"/>-->
 
+<!--        <argument-->
+<!--            android:name="emailText"-->
+<!--            app:argType="string" />-->
+<!--        </fragment>-->
+<!--        <include app:graph="@navigation/search_vacancies_navigation" />-->
 </navigation>

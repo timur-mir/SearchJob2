@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SearchJob2</string>
+    <string name="feature_vacancies">VacanciesFeature</string>
 </resources>

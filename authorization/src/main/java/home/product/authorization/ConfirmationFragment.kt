@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import home.product.authorization.databinding.FragmentConfirmationBinding
 import home.product.navigations.navigate
@@ -22,11 +24,12 @@ class ConfirmationFragment : Fragment() {
         _binding = FragmentConfirmationBinding.inflate(inflater)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val arg: ConfirmationFragmentArgs by navArgs()
         val sequrityCode = StringBuilder()
-        binding.conformationNotify.text="Отправили код на ${arg.emailText.toString()}"
+        binding.conformationNotify.text = "Отправили код на ${arg.emailText.toString()}"
         binding.editDig2.isCursorVisible = true
         binding.editDig1.requestFocus()
         binding.editDig1.addTextChangedListener(object : TextWatcher {
@@ -126,8 +129,13 @@ class ConfirmationFragment : Fragment() {
         })
         binding.confirmButton.setOnClickListener {
             if (sequrityCode.length == 4) {
-                navigate(R.id.action_confirmationFragment_to_searchFragment,
-                    home.product.navigations.R.id.main_login_host)
+                //   navigate(R.id.action_confirmationFragment_to_searchFragment,
+                //        home.product.navigations.R.id.main_login_host)
+                val navContr = findNavController()
+                navContr.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
+                // navigate(home.product.vacancies.R.id.searchFragment2, home.product.vacancies.R.id.vacancies_search_host)
+                navContr.navigate(home.product.vacancies.R.id.searchFragment2)
+
             }
         }
 

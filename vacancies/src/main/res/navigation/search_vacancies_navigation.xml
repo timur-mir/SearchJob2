@@ -15,4 +15,21 @@
         android:id="@+id/searchFragment2"
         android:name="home.product.vacancies.presentation.SearchFragment"
         android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="home.howework.searchjob.features.usefavorite.FavoriteFragment"
+        android:label="FavoriteFragment" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="home.howework.searchjob.features.usemessage.MessageFragment"
+        android:label="MessageFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="home.howework.searchjob.features.useprofile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/responsesFragment"
+        android:name="home.howework.searchjob.features.useresponse.ResponsesFragment"
+        android:label="ResponsesFragment" />
+
 </navigation>

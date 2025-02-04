@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-</manifest>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="home.product.vacancies"> </manifest>
+<!--    package="home.product.vacancies"-->
+<!--    xmlns:dist="http://schemas.android.com/apk/distribution">-->
+<!--    <dist:module-->
+<!--        dist:instant="false"-->
+<!--        dist:onDemand="false"-->
+<!--        dist:title="@string/feature_vacancies">-->
+<!--        <dist:fusing dist:include="false"/>-->
+<!--    </dist:module>-->

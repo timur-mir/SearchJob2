@@ -18,11 +18,11 @@
         app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/authorization_confirmation_navigation" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/avatar_ellipse">
+<!--    <ImageView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:src="@drawable/avatar_ellipse">-->
 
-    </ImageView>
+<!--    </ImageView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
