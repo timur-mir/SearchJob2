@@ -1,5 +1,4 @@
-package home.howework.domain.entities
-
+package home.product.vacancies.domain.entities
 sealed class OffersMain{
     data class VacanciesNear(
         var id    : String,

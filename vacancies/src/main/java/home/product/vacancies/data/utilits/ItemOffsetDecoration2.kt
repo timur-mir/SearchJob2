@@ -1,10 +1,10 @@
-package home.howework.searchjob.Utilts
+package home.product.vacancies.data.utilits
 
 import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import home.howework.searchjob.Utilts.ItemOffsetDecoration.Companion.fromDpToPixels
+import home.product.vacancies.data.utilits.ItemOffsetDecoration.Companion.fromDpToPixels
 
 class ItemOffsetDecoration2 (private val context: Context): RecyclerView.ItemDecoration() {
     override fun getItemOffsets(

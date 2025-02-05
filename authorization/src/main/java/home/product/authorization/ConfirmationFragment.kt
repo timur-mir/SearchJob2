@@ -132,9 +132,10 @@ class ConfirmationFragment : Fragment() {
                 //   navigate(R.id.action_confirmationFragment_to_searchFragment,
                 //        home.product.navigations.R.id.main_login_host)
                 val navContr = findNavController()
-                navContr.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
-                // navigate(home.product.vacancies.R.id.searchFragment2, home.product.vacancies.R.id.vacancies_search_host)
-                navContr.navigate(home.product.vacancies.R.id.searchFragment2)
+//                navContr.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
+//                // navigate(home.product.vacancies.R.id.searchFragment2, home.product.vacancies.R.id.vacancies_search_host)
+//                navContr.navigate(home.product.vacancies.R.id.searchFragment2)
+                navigate(home.product.navigations.R.id.searchFragment,home.product.navigations.R.id.frag_cont)
 
             }
         }

@@ -10,14 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import home.howework.searchjob.Utilts.ItemOffsetDecoration
-import home.howework.searchjob.Utilts.ItemOffsetDecoration2
-import home.howework.searchjob.features.usesearch.adapters.OffersMainAdapter
-import home.howework.searchjob.features.usesearch.adapters.VacanciesAdapter
-import home.product.vacancies.R
-import home.product.vacancies.databinding.FragmentSearchBinding
+import home.product.vacancies.data.utilits.ItemOffsetDecoration
+import home.product.vacancies.data.utilits.ItemOffsetDecoration2
+import home.product.vacancies.presentation.adapters.OffersMainAdapter
 import home.product.vacancies.databinding.FragmentSearchVacanciesBinding
+import home.product.vacancies.presentation.adapters.VacanciesAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -59,7 +58,10 @@ class SearchVacanciesFragment : Fragment() {
             setHasFixedSize(true)
             addItemDecoration(ItemOffsetDecoration(requireContext()))
         }
-
+        binding.getAllVacancies.setOnClickListener{
+            val action = SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToFullVacanciesFragment()
+            findNavController().navigate(action)
+        }
     }
 
     override fun onStart() {

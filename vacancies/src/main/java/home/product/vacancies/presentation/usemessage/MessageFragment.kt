@@ -1,4 +1,4 @@
-package home.howework.searchjob.features.usemessage
+package home.product.vacancies.presentation.usemessage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

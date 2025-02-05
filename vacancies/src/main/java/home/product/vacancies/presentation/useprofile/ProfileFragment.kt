@@ -1,4 +1,4 @@
-package home.howework.searchjob.features.useprofile
+package home.product.vacancies.presentation.useprofile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

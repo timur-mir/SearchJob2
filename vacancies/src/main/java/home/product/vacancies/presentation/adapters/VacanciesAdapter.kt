@@ -1,4 +1,4 @@
-package home.howework.searchjob.features.usesearch.adapters
+package home.product.vacancies.presentation.adapters
 
 import android.os.Build
 import android.view.LayoutInflater
@@ -7,12 +7,11 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import home.howework.data.mocknetwork.model.VacanciesResponse
-import home.howework.domain.entities.VacanciesDto
 import home.product.vacancies.R
 
 
 import home.product.vacancies.databinding.ListVacanciesBinding
+import home.product.vacancies.domain.entities.VacanciesDto
 
 class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
     ListAdapter<VacanciesDto, VacanciesHolder>(DiffUtilCallbackVacancies()){

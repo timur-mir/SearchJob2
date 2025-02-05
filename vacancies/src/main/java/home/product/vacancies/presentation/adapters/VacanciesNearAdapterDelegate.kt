@@ -1,11 +1,11 @@
-package home.howework.searchjob.features.usesearch.adapters
+package home.product.vacancies.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
-import home.howework.domain.entities.OffersMain
 import home.product.vacancies.databinding.VacanciesNearListBinding
+import home.product.vacancies.domain.entities.OffersMain
 
 class VacanciesNearAdapterDelegate(private val OnItemClick: (link: String) -> Unit):
     AbsListItemAdapterDelegate<OffersMain.VacanciesNear, OffersMain, VacanciesNearAdapterDelegate.VacanciesNearHolder>() {

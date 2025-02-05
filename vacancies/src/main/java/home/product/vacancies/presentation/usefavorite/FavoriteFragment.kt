@@ -1,4 +1,4 @@
-package home.howework.searchjob.features.usefavorite
+package home.product.vacancies.presentation.usefavorite
 
 import android.os.Bundle
 import android.view.LayoutInflater

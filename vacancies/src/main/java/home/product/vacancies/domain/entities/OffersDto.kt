@@ -1,6 +1,4 @@
-package home.howework.domain.entities
-
-
+package home.product.vacancies.domain.entities
 data class OffersDto (
      var id    : String?,
      var title : String?,

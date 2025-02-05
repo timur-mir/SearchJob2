@@ -1,4 +1,4 @@
-package home.howework.domain.entities
+package home.product.vacancies.domain.entities
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

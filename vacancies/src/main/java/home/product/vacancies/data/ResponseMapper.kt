@@ -1,12 +1,13 @@
 package home.product.vacancies.data
 
 import home.howework.data.mocknetwork.model.OffersWorkCompaniesResponse
-import home.howework.domain.entities.AddressDto
-import home.howework.domain.entities.ExperienceDto
-import home.howework.domain.entities.OffersDto
-import home.howework.domain.entities.OffersWorkCompaniesDto
-import home.howework.domain.entities.SalaryDto
-import home.howework.domain.entities.VacanciesDto
+import home.product.vacancies.domain.entities.AddressDto
+import home.product.vacancies.domain.entities.ExperienceDto
+import home.product.vacancies.domain.entities.OffersDto
+import home.product.vacancies.domain.entities.OffersWorkCompaniesDto
+import home.product.vacancies.domain.entities.SalaryDto
+import home.product.vacancies.domain.entities.VacanciesDto
+
 
 fun OffersWorkCompaniesResponse.mapToOffersWorkCompaniesDto(): OffersWorkCompaniesDto {
     return with(this) {

@@ -2,11 +2,11 @@ package home.product.vacancies.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import home.howework.domain.entities.OffersWorkCompaniesDto
 import home.product.vacancies.domain.GetOffersWorkCompaniesUseCase
+import home.product.vacancies.domain.entities.OffersMain
+import home.product.vacancies.domain.entities.OffersWorkCompaniesDto
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import home.howework.domain.entities.OffersMain
 import kotlinx.coroutines.launch
 
 class MainViewModel  (

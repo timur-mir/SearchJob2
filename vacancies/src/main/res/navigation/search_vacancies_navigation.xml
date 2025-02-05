@@ -10,26 +10,43 @@
         android:id="@+id/searchVacanciesFragment"
         android:name="home.product.vacancies.presentation.SearchVacanciesFragment"
         android:label="fragment_search_vacancies"
-        tools:layout="@layout/fragment_search_vacancies" />
-    <fragment
-        android:id="@+id/searchFragment2"
-        android:name="home.product.vacancies.presentation.SearchFragment"
-        android:label="SearchFragment" />
+        tools:layout="@layout/fragment_search_vacancies" >
+        <action
+            android:id="@+id/action_searchVacanciesFragment_to_fullVacanciesFragment"
+            app:destination="@id/fullVacanciesFragment" />
+    </fragment>
+<!--  -->
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="home.howework.searchjob.features.usefavorite.FavoriteFragment"
+        android:name="home.product.vacancies.presentation.usefavorite.FavoriteFragment"
         android:label="FavoriteFragment" />
     <fragment
         android:id="@+id/messageFragment"
-        android:name="home.howework.searchjob.features.usemessage.MessageFragment"
+        android:name="home.product.vacancies.presentation.usemessage.MessageFragment"
         android:label="MessageFragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="home.howework.searchjob.features.useprofile.ProfileFragment"
+        android:name="home.product.vacancies.presentation.useprofile.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
         android:id="@+id/responsesFragment"
-        android:name="home.howework.searchjob.features.useresponse.ResponsesFragment"
+        android:name="home.product.vacancies.presentation.useresponse.ResponsesFragment"
         android:label="ResponsesFragment" />
+    <fragment
+        android:id="@+id/fullVacanciesFragment"
+        android:name="home.product.vacancies.presentation.FullVacanciesFragment"
+        android:label="FullVacanciesFragment" >
+        <action
+            android:id="@+id/action_fullVacanciesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="home.product.vacancies.presentation.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="aboutVacancy"
+            app:argType="home.product.vacancies.domain.entities.VacanciesDto" />
+    </fragment>
 
 </navigation>

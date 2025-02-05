@@ -1,4 +1,4 @@
-package home.howework.searchjob.Utilts
+package home.product.vacancies.data.utilits
 
 import android.content.Context
 import android.graphics.Rect

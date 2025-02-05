@@ -4,6 +4,7 @@ import  androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ReportFragment.Companion.reportFragment
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
@@ -24,79 +25,64 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = binding.panelNavigationMain
         val navController = findNavController(home.product.navigations.R.id.frag_cont)
         bottomNavigationView.setupWithNavController(navController)
-
         panelNav = bottomNavigationView
-        bottomNavigationView.setOnNavigationItemSelectedListener { item->
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-
                 R.id.searchFragment ->
-
-                    if ( navController.currentDestination!!.id == home.product.authorization.R.id.mainLoginFragment
+                    if (navController.currentDestination!!.id == R.id.mainLoginFragment
 
                     ) {
-                        Toast.makeText(this@MainActivity,"Вложенный хост", Toast.LENGTH_LONG).show()
-                         }
-                    else {
-                         navController.popBackStack()
-                        navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
-                        navController.navigate(home.product.vacancies.R.id.searchFragment2)
+                    } else {
+                        if (navController.currentDestination!!.id == home.product.vacancies.R.id.favoriteFragment ||
+                            navController.currentDestination!!.id == home.product.vacancies.R.id.responsesFragment ||
+                            navController.currentDestination!!.id == home.product.vacancies.R.id.messageFragment ||
+                            navController.currentDestination!!.id == home.product.vacancies.R.id.profileFragment
+                        ) {
+                            navController.setGraph(R.navigation.navigation_global)
+                            navController.navigate(R.id.searchFragment)
+                        } else {
+                            navController.navigate(R.id.searchFragment)
+                        }
                     }
 
 
                 R.id.favoriteFragment -> {
-                    if (navController.graph.parent!!.id !=home.product.vacancies.R.navigation.search_vacancies_navigation) {
-                        Toast.makeText(this@MainActivity, "Вложенный хост", Toast.LENGTH_LONG)
-                            .show()
-
+                    if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
                     } else {
-                        Toast.makeText(this@MainActivity, "Избранное", Toast.LENGTH_LONG).show()
-                        navController.popBackStack()
-                       // navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
+                        navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
                         navController.navigate(home.product.vacancies.R.id.favoriteFragment)
                     }
                 }
 
                 R.id.responsesFragment -> {
-                    if (navController.currentDestination!!.id == home.product.authorization.R.id.mainLoginFragment) {
-                        Toast.makeText(this@MainActivity, "Вложенный хост", Toast.LENGTH_LONG)
-                            .show()
+                    if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
                     } else {
-                        Toast.makeText(this@MainActivity, "Отклики", Toast.LENGTH_LONG).show()
-                        navController.popBackStack()
                         navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
                         navController.navigate(home.product.vacancies.R.id.responsesFragment)
                     }
                 }
 
                 R.id.messageFragment -> {
-                    if (navController.currentDestination!!.id == home.product.authorization.R.id.mainLoginFragment) {
-                        Toast.makeText(this@MainActivity, "Вложенный хост", Toast.LENGTH_LONG)
-                            .show()
+                    if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
                     } else {
-                        Toast.makeText(this@MainActivity, "Сообщения", Toast.LENGTH_LONG).show()
-                        navController.popBackStack()
                         navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
                         navController.navigate(home.product.vacancies.R.id.messageFragment)
                     }
                 }
 
                 R.id.profileFragment -> {
-                    if (navController.currentDestination!!.id == home.product.authorization.R.id.mainLoginFragment) {
-                        Toast.makeText(this@MainActivity, "Вложенный хост", Toast.LENGTH_LONG)
-                            .show()
+                    if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
                     } else {
-                        Toast.makeText(this@MainActivity, "Профиль", Toast.LENGTH_LONG).show()
-                        navController.popBackStack()
                         navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
                         navController.navigate(home.product.vacancies.R.id.profileFragment)
                     }
                 }
-
             }
             true
         }
     }
-    }
-    object BottomPanel {
-        lateinit var panelNav: BottomNavigationView
-    }
+}
+
+object BottomPanel {
+    lateinit var panelNav: BottomNavigationView
+}

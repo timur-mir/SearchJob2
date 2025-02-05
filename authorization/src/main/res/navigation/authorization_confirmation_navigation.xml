@@ -34,9 +34,9 @@
 <!--        android:name="home.product.vacancies.presentation.SearchFragment"-->
 <!--        android:label="SearchFragment" >-->
 <!--    </fragment>-->
-    <fragment
-        android:id="@+id/mainLoginFragment"
-        android:name="home.product.authorization.MainLoginFragment"
-        android:label="MainLoginFragment" />
+<!--    <fragment-->
+<!--        android:id="@+id/mainLoginFragment"-->
+<!--        android:name="home.product.authorization.MainLoginFragment"-->
+<!--        android:label="MainLoginFragment" />-->
 
 </navigation>

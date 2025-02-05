@@ -1,4 +1,4 @@
-package home.howework.searchjob.features.useresponse
+package home.product.vacancies.presentation.useresponse
 
 import android.os.Bundle
 import android.view.LayoutInflater

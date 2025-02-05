@@ -1,12 +1,12 @@
-package home.howework.searchjob.features.usesearch.adapters
+package home.product.vacancies.presentation.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
-import home.howework.domain.entities.OffersMain
 import home.product.vacancies.databinding.TemporaryJobListBinding
+import home.product.vacancies.domain.entities.OffersMain
 
 
 class TemporaryJobAdapter (private val OnItemClick: (link: String) -> Unit):

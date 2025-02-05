@@ -1,8 +1,8 @@
-package home.howework.searchjob.features.usesearch.adapters
+package home.product.vacancies.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
-import home.howework.domain.entities.OffersMain
+import home.product.vacancies.domain.entities.OffersMain
 
 
 class OffersMainAdapter(private val OnItemClick: (link:String) -> Unit):
