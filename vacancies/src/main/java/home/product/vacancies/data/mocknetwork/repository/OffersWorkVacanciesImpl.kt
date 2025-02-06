@@ -9,10 +9,10 @@ import home.product.vacancies.domain.entities.OffersWorkCompaniesDto
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class OffersWorkVacanciesImpl() :
+class OffersWorkVacanciesImpl @Inject constructor(private val networkServiceClient: NetworkServiceClient) :
     OffersWorkCompaniesRepository {
-    private val networkServiceClient: NetworkServiceClient = NetworkServiceClient()
     override suspend fun getOffersVacancies(callback: (OffersWorkCompaniesDto) -> Unit) {
         networkServiceClient.getMockRemoteDataSourceRepo().getOffersVacancies()
             .enqueue(object : Callback<OffersWorkCompaniesResponse> {

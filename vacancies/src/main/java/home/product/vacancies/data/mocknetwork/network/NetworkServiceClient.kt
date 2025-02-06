@@ -6,8 +6,9 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import javax.inject.Inject
 
-class NetworkServiceClient {
+class NetworkServiceClient @Inject constructor() {
     interface ApiService {
         @GET("jobs")
         fun getOffersVacancies(): Call<OffersWorkCompaniesResponse>

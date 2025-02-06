@@ -8,12 +8,12 @@ import home.product.vacancies.domain.entities.OffersWorkCompaniesDto
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel  (
-//    private val remoteMockRepo: GetOffersWorkCompaniesUseCase
-// val remoteMockRepo: GetOffersWorkCompaniesUseCase
+class MainViewModel @Inject constructor (
+    private val remoteMockRepo: GetOffersWorkCompaniesUseCase
 ) : ViewModel() {
-    val remoteMockRepo: GetOffersWorkCompaniesUseCase=GetOffersWorkCompaniesUseCase()
+
     val data = OffersWorkCompaniesDto()
     private val _responseOffersVacancies = MutableStateFlow<OffersWorkCompaniesDto>(
         data

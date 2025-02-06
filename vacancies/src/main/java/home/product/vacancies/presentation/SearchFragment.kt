@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import home.product.vacancies.databinding.FragmentSearchBinding
+import home.product.vacancies.di.DaggerVacanciesComponent
 
 
 class SearchFragment : Fragment() {
@@ -18,5 +19,10 @@ class SearchFragment : Fragment() {
     ): View? {
         _binding = FragmentSearchBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 }

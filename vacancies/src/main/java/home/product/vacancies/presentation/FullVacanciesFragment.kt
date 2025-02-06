@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import home.product.vacancies.data.utilits.ItemOffsetDecoration
 import home.product.vacancies.R
 import home.product.vacancies.databinding.FullVacanciesFragmentBinding
+import home.product.vacancies.di.DaggerVacanciesComponent
 import home.product.vacancies.domain.entities.VacanciesDto
 import home.product.vacancies.presentation.adapters.VacanciesAdapter
 import kotlinx.coroutines.flow.launchIn
@@ -27,8 +28,9 @@ class FullVacanciesFragment: Fragment() {
     private val vacanciesAdapter =
         VacanciesAdapter { idVacant -> toDetail(idVacant) }
 
-
-    private val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels {
+        DaggerVacanciesComponent.create().mainViewModelFactory()
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

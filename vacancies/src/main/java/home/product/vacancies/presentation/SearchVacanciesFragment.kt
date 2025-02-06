@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,16 +17,24 @@ import home.product.vacancies.data.utilits.ItemOffsetDecoration
 import home.product.vacancies.data.utilits.ItemOffsetDecoration2
 import home.product.vacancies.presentation.adapters.OffersMainAdapter
 import home.product.vacancies.databinding.FragmentSearchVacanciesBinding
+import home.product.vacancies.di.DaggerVacanciesComponent
+
 import home.product.vacancies.presentation.adapters.VacanciesAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 class SearchVacanciesFragment : Fragment() {
     private var _binding: FragmentSearchVacanciesBinding? = null
     val binding get() = _binding!!
-    private val mainViewModel: MainViewModel by viewModels()
+//@Inject
+//private val  mainViewModel: MainViewModel by viewModels()
+private val mainViewModel: MainViewModel by viewModels {
+    DaggerVacanciesComponent.create().mainViewModelFactory()
+
+}
     private val vacanciesAdapter =
         VacanciesAdapter { vacancy->  }
     private val offersMainAdapter =
@@ -35,16 +44,20 @@ class SearchVacanciesFragment : Fragment() {
             browserIntent.data= Uri.parse(link)
             startActivity(browserIntent)
         }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSearchVacanciesBinding.inflate(inflater)
+
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         with(binding.topOffers) {
             adapter = offersMainAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
@@ -67,11 +80,11 @@ class SearchVacanciesFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         lifecycleScope.launch {
-            mainViewModel.getOffersVacancies()
-            mainViewModel.responseOffersOffersMain.onEach { list ->
+            mainViewModel!!.getOffersVacancies()
+            mainViewModel!!.responseOffersOffersMain.onEach { list ->
                 offersMainAdapter.items = list
             }.launchIn(this)
-            mainViewModel.responseOffersVacancies.onEach { list ->
+            mainViewModel!!.responseOffersVacancies.onEach { list ->
                 val listVacancies=list.vacancies
                 binding.getAllVacancies.text="Ещё ${listVacancies.size-3} вакансии"
                 vacanciesAdapter.submitList(listVacancies.take(3))
