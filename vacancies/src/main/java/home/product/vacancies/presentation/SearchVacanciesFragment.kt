@@ -29,8 +29,7 @@ import javax.inject.Inject
 class SearchVacanciesFragment : Fragment() {
     private var _binding: FragmentSearchVacanciesBinding? = null
     val binding get() = _binding!!
-//@Inject
-//private val  mainViewModel: MainViewModel by viewModels()
+
 private val mainViewModel: MainViewModel by viewModels {
     DaggerVacanciesComponent.create().mainViewModelFactory()
 

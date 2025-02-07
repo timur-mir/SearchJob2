@@ -7,7 +7,6 @@ import home.product.vacancies.di.VacanciesComponent
 import javax.inject.Singleton
 
 @AppScope
-//@Singleton
 @Component(
     dependencies = [VacanciesComponent::class]
 )

@@ -34,11 +34,9 @@ class ConfirmationFragment : Fragment() {
         binding.editDig1.requestFocus()
         binding.editDig1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -53,17 +51,14 @@ class ConfirmationFragment : Fragment() {
                     binding.editDig1.isCursorVisible = true
                 }
             }
-
         })
 
 
         binding.editDig2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -129,14 +124,10 @@ class ConfirmationFragment : Fragment() {
         })
         binding.confirmButton.setOnClickListener {
             if (sequrityCode.length == 4) {
-                //   navigate(R.id.action_confirmationFragment_to_searchFragment,
-                //        home.product.navigations.R.id.main_login_host)
-                val navContr = findNavController()
-//                navContr.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
-//                // navigate(home.product.vacancies.R.id.searchFragment2, home.product.vacancies.R.id.vacancies_search_host)
-//                navContr.navigate(home.product.vacancies.R.id.searchFragment2)
-                navigate(home.product.navigations.R.id.searchFragment,home.product.navigations.R.id.frag_cont)
-
+                navigate(
+                    home.product.navigations.R.id.searchFragment,
+                    home.product.navigations.R.id.frag_cont
+                )
             }
         }
 

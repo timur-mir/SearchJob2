@@ -23,6 +23,5 @@ class MainLoginFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//       val nav=  Navigation.findNavController(requireActivity(), home.product.navigations.R.id.main_login_host)
     }
 }

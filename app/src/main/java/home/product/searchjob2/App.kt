@@ -10,19 +10,11 @@ import home.product.vacancies.di.VacanciesComponentProvider
 
 class App : Application() {
     lateinit var vcComponent: VacanciesComponent
-    companion object {
-       // @JvmStatic
-      //  fun vcComponentD(context: Context) =(context.applicationContext as? Application)?.vcComponent
-
-    }
     override fun onCreate() {
         super.onCreate()
-        initVcDependencyInjection()
-        initAppComponent()
-
+//        initVcDependencyInjection()
+//        initAppComponent()
     }
-
-
     private fun initAppComponent() {
         DaggerAppComponent
             .builder()
@@ -34,5 +26,4 @@ class App : Application() {
             .builder()
             .build()
     }
-
 }

@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/search_vacancies_navigation"
     app:startDestination="@id/searchVacanciesFragment">
-
-
     <fragment
         android:id="@+id/searchVacanciesFragment"
         android:name="home.product.vacancies.presentation.SearchVacanciesFragment"
@@ -15,7 +13,6 @@
             android:id="@+id/action_searchVacanciesFragment_to_fullVacanciesFragment"
             app:destination="@id/fullVacanciesFragment" />
     </fragment>
-<!--  -->
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="home.product.vacancies.presentation.usefavorite.FavoriteFragment"

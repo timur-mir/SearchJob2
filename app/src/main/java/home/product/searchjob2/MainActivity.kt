@@ -9,10 +9,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import home.product.navigations.navigate
-import home.product.searchjob2.BottomPanel.panelNav
-
 import home.product.searchjob2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,12 +21,10 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = binding.panelNavigationMain
         val navController = findNavController(home.product.navigations.R.id.frag_cont)
         bottomNavigationView.setupWithNavController(navController)
-        panelNav = bottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.searchFragment ->
                     if (navController.currentDestination!!.id == R.id.mainLoginFragment
-
                     ) {
                     } else {
                         if (navController.currentDestination!!.id == home.product.vacancies.R.id.favoriteFragment ||
@@ -83,6 +77,3 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-object BottomPanel {
-    lateinit var panelNav: BottomNavigationView
-}
