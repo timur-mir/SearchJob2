@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <!--    <item name="action_confirmationFragment_to_searchFragment" type="id"/>-->
-    <item name="action_mainLoginFragment_to_searchFragment" type="id"/>
+<!--    <item name="action_mainLoginFragment_to_searchFragment" type="id"/>-->
 <!--    <item name="action_confirmationFragment_to_vacanciesFeature" type="id"/>-->
 </resources>

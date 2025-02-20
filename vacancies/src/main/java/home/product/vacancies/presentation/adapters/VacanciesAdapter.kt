@@ -12,47 +12,62 @@ import home.product.vacancies.R
 
 import home.product.vacancies.databinding.ListVacanciesBinding
 import home.product.vacancies.domain.entities.VacanciesDto
+import home.product.vacancies.presentation.helpScopeRefference
 
 class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
-    ListAdapter<VacanciesDto, VacanciesHolder>(DiffUtilCallbackVacancies()){
+    ListAdapter<VacanciesDto, VacanciesHolder>(DiffUtilCallbackVacancies()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacanciesHolder {
-       return VacanciesHolder(
-          ListVacanciesBinding.inflate(
-               LayoutInflater.from(parent.context),
-               parent,
-               false
-           )
-       )
+        return VacanciesHolder(
+            ListVacanciesBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
+
     override fun getItemCount(): Int {
         return super.getItemCount()
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: VacanciesHolder, position: Int) {
         val item = getItem(position)
         with(holder.binding) {
-            if(item.lookingNumber%10==2||item.lookingNumber%10==3||item.lookingNumber%10==4) {
-                lookCaption.text="Сейчас просматривают ${item.lookingNumber.toString()} человека"
+            if (item.lookingNumber % 10 == 2 || item.lookingNumber % 10 == 3 || item.lookingNumber % 10 == 4) {
+                lookCaption.text = "Сейчас просматривают ${item.lookingNumber.toString()} человека"
+            } else {
+                lookCaption.text = "Сейчас просматривает ${item.lookingNumber.toString()} человек"
             }
-            else {
-                lookCaption.text="Сейчас просматривает ${item.lookingNumber.toString()} человек"
+            if (item.isFavorite) {
+                isFavorite.setImageResource(R.drawable.heart)
+            } else {
+                isFavorite.setImageResource(R.drawable.heart2)
             }
-           if( item.isFavorite){
-               isFavorite.setImageResource(R.drawable.heart)
-           }
-            else{
-               isFavorite.setImageResource(R.drawable.heart2)
+            isFavorite.setOnClickListener {
+                helpScopeRefference.turnButton = !helpScopeRefference.turnButton
+                if(helpScopeRefference.turnButton )
+                {
+                    isFavorite.setImageResource(R.drawable.heart)
+                }
+                else{
+                    isFavorite.setImageResource(R.drawable.heart2)
+                }
             }
-
-            vacanctCaption.text=item.title
-            townVacant.text=item.address.town.toString()
-            portfolioCaption.text=item.experience.text.toString()
-            publishedTime.text="Опубликовано ${item.publishedDate.toString()}"
-            respond.setOnClickListener{
+            vacanctCaption.text = item.title
+            townVacant.text = item.address.town.toString()
+            portfolioCaption.text = item.experience.text.toString()
+            publishedTime.text = "Опубликовано ${item.publishedDate.toString()}"
+            respond.setOnClickListener {
 
             }
             holder.binding.root.setOnClickListener {
-                OnClick(item)
+                if (helpScopeRefference.turnButton)
+                { OnClick(item.copy(isFavorite=true))}
+                else
+                {
+                    OnClick(item.copy(isFavorite=false))
+                }
             }
         }
 

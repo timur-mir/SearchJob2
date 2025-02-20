@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import home.product.searchjob2.App
 import home.product.vacancies.data.utilits.ItemOffsetDecoration
 import home.product.vacancies.R
 import home.product.vacancies.databinding.FullVacanciesFragmentBinding
@@ -20,25 +21,32 @@ import home.product.vacancies.presentation.adapters.VacanciesAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-class FullVacanciesFragment: Fragment() {
+class FullVacanciesFragment @Inject constructor() : Fragment() {
     private var _binding: FullVacanciesFragmentBinding? = null
     val binding get() = _binding!!
     private val vacanciesAdapter =
         VacanciesAdapter { idVacant -> toDetail(idVacant) }
 
-    private val mainViewModel: MainViewModel by viewModels {
-        DaggerVacanciesComponent.create().mainViewModelFactory()
-    }
+    @Inject
+    lateinit var mainViewModel: MainViewModel
+
+    //    private val mainViewModel: MainViewModel by viewModels {
+//        DaggerVacanciesComponent.builder().build().mainViewModelFactory()
+//    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FullVacanciesFragmentBinding.inflate(inflater)
+        DaggerVacanciesComponent.builder().coreComponent(App.coreComponent(requireContext()))
+            .build().inject2(this)
         return binding.root
     }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,14 +61,14 @@ class FullVacanciesFragment: Fragment() {
         binding.fullSearchVacant.setOnTouchListener(object : View.OnTouchListener {
 
             override fun onTouch(view: View?, event: MotionEvent?): Boolean {
-                val DRAWABLE_LEFT=0
-                val DRAWABLE_TOP=1
-                val DRAWABLE_RIGHT=2
-                val DRAWABLE_BOTTOM=3
-                if(event!!.action == MotionEvent.ACTION_UP){
-                    if(binding.fullSearchVacant.compoundDrawables[DRAWABLE_LEFT]!=null) {
-                        if ( binding.fullSearchVacant.compoundDrawables[DRAWABLE_LEFT].bounds.width() >= event.rawX -  binding.fullSearchVacant.left ) {
-                           findNavController().popBackStack()
+                val DRAWABLE_LEFT = 0
+                val DRAWABLE_TOP = 1
+                val DRAWABLE_RIGHT = 2
+                val DRAWABLE_BOTTOM = 3
+                if (event!!.action == MotionEvent.ACTION_UP) {
+                    if (binding.fullSearchVacant.compoundDrawables[DRAWABLE_LEFT] != null) {
+                        if (binding.fullSearchVacant.compoundDrawables[DRAWABLE_LEFT].bounds.width() >= event.rawX - binding.fullSearchVacant.left) {
+                            findNavController().popBackStack()
                             return true
                         }
                     }
@@ -70,21 +78,31 @@ class FullVacanciesFragment: Fragment() {
 
         })
     }
+
     override fun onStart() {
         super.onStart()
         lifecycleScope.launch {
             mainViewModel.getOffersVacancies()
             mainViewModel.responseOffersVacancies.onEach { list ->
-                vacanciesAdapter.submitList(list.vacancies )
-                binding.vacanciesAmount.text="${list.vacancies.size} вакансий"
+                vacanciesAdapter.submitList(list.vacancies)
+                binding.vacanciesAmount.text = "${list.vacancies.size} вакансий"
             }.launchIn(this)
 
         }
     }
+
     private fun toDetail(vacancy: VacanciesDto) {
+        if (vacancy.isFavorite) {
+            mainViewModel.saveInFavorite(vacancy)
+        }
         val action =
             FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(vacancy)
         findNavController().navigate(action)
 
     }
+
+}
+
+object helpScopeRefference {
+    var turnButton = false
 }

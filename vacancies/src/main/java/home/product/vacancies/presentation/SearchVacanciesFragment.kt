@@ -1,5 +1,6 @@
 package home.product.vacancies.presentation
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -13,12 +14,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import home.product.core.database.di.CoreComponent
+import home.product.searchjob2.App.Companion.coreComponent
 import home.product.vacancies.data.utilits.ItemOffsetDecoration
 import home.product.vacancies.data.utilits.ItemOffsetDecoration2
 import home.product.vacancies.presentation.adapters.OffersMainAdapter
 import home.product.vacancies.databinding.FragmentSearchVacanciesBinding
 import home.product.vacancies.di.DaggerVacanciesComponent
-
+import home.product.vacancies.di.DomainModule
 import home.product.vacancies.presentation.adapters.VacanciesAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -29,11 +32,11 @@ import javax.inject.Inject
 class SearchVacanciesFragment : Fragment() {
     private var _binding: FragmentSearchVacanciesBinding? = null
     val binding get() = _binding!!
-
-private val mainViewModel: MainViewModel by viewModels {
-    DaggerVacanciesComponent.create().mainViewModelFactory()
-
-}
+    @Inject
+lateinit var mainViewModel:MainViewModel
+//private val mainViewModel: MainViewModel by viewModels {
+//    DaggerVacanciesComponent.builder().build().mainViewModelFactory()
+//}
     private val vacanciesAdapter =
         VacanciesAdapter { vacancy->  }
     private val offersMainAdapter =
@@ -44,19 +47,22 @@ private val mainViewModel: MainViewModel by viewModels {
             startActivity(browserIntent)
         }
 
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+   //    DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())).build().inject(this)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSearchVacanciesBinding.inflate(inflater)
-
+        DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())). build().inject(this)
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+      //  DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())). build().inject(this)
         with(binding.topOffers) {
             adapter = offersMainAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
@@ -78,6 +84,7 @@ private val mainViewModel: MainViewModel by viewModels {
 
     override fun onStart() {
         super.onStart()
+       // DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())).build().inject(this)
         lifecycleScope.launch {
             mainViewModel!!.getOffersVacancies()
             mainViewModel!!.responseOffersOffersMain.onEach { list ->

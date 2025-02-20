@@ -1,5 +1,6 @@
 package home.product.searchjob2
 
+import android.content.Context
 import  androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+
+import com.google.android.play.core.splitcompat.SplitCompat
+//import androidx.navigation.ui.setupWithNavController
 import home.product.searchjob2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,59 +21,46 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         val bottomNavigationView = binding.panelNavigationMain
+
         val navController = findNavController(home.product.navigations.R.id.frag_cont)
         bottomNavigationView.setupWithNavController(navController)
+
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.searchFragment ->
-                    if (navController.currentDestination!!.id == R.id.mainLoginFragment
+                R.id.searchFragmentB -> {
+                    if (navController.currentDestination!!.id == R.id.mainLoginFragment ||
+                        navController.currentDestination!!.id == home.product.authorization.R.id.authorizationFragment ||
+                        navController.currentDestination!!.id == home.product.authorization.R.id.confirmationFragment
                     ) {
                     } else {
-                        if (navController.currentDestination!!.id == home.product.vacancies.R.id.favoriteFragment ||
-                            navController.currentDestination!!.id == home.product.vacancies.R.id.responsesFragment ||
-                            navController.currentDestination!!.id == home.product.vacancies.R.id.messageFragment ||
-                            navController.currentDestination!!.id == home.product.vacancies.R.id.profileFragment
-                        ) {
-                            navController.setGraph(R.navigation.navigation_global)
-                            navController.navigate(R.id.searchFragment)
-                        } else {
-                            navController.navigate(R.id.searchFragment)
-                        }
-                    }
-
-
-                R.id.favoriteFragment -> {
-                    if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
-                    } else {
-                        navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
-                        navController.navigate(home.product.vacancies.R.id.favoriteFragment)
+                        navController.setGraph(R.navigation.navigation_global)
+                        navController.navigate(home.product.navigations.R.id.searchFragment)
                     }
                 }
 
-                R.id.responsesFragment -> {
+
+                R.id.favoriteFragmentB -> {
                     if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
                     } else {
-                        navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
-                        navController.navigate(home.product.vacancies.R.id.responsesFragment)
+                        navController.setGraph(R.navigation.navigation_global)
+                        navController.navigate(home.product.navigations.R.id.favoriteFragment)
                     }
                 }
 
-                R.id.messageFragment -> {
-                    if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
-                    } else {
-                        navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
-                        navController.navigate(home.product.vacancies.R.id.messageFragment)
-                    }
+
+                R.id.responsesFragmentB -> {
+
                 }
 
-                R.id.profileFragment -> {
-                    if (navController.currentDestination!!.id == R.id.mainLoginFragment) {
-                    } else {
-                        navController.setGraph(home.product.vacancies.R.navigation.search_vacancies_navigation)
-                        navController.navigate(home.product.vacancies.R.id.profileFragment)
-                    }
+                R.id.messageFragmentB -> {
+
+                }
+
+                R.id.profileFragmentB -> {
+
                 }
             }
             true

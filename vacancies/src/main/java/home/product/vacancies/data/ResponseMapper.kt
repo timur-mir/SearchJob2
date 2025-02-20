@@ -1,6 +1,10 @@
 package home.product.vacancies.data
 
-import home.howework.data.mocknetwork.model.OffersWorkCompaniesResponse
+import home.product.core.database.MainEntity
+import home.product.core.response.AddressResponse
+import home.product.core.response.ExperienceResponse
+import home.product.core.response.OffersWorkCompaniesResponse
+import home.product.core.response.SalaryResponse
 import home.product.vacancies.domain.entities.AddressDto
 import home.product.vacancies.domain.entities.ExperienceDto
 import home.product.vacancies.domain.entities.OffersDto
@@ -8,8 +12,17 @@ import home.product.vacancies.domain.entities.OffersWorkCompaniesDto
 import home.product.vacancies.domain.entities.SalaryDto
 import home.product.vacancies.domain.entities.VacanciesDto
 
-
-fun OffersWorkCompaniesResponse.mapToOffersWorkCompaniesDto(): OffersWorkCompaniesDto {
+fun VacanciesDto.mapToMainEntity():MainEntity{
+    return with(this){
+        MainEntity(id = id, lookingNumber = lookingNumber, title = title,
+        address = AddressResponse(town = address.town, street = address.street, house = address.house), company = company,
+        experience = ExperienceResponse(previewText = experience.previewText, text = experience.text), publishedDate = publishedDate,
+        isFavorite = isFavorite, salary = SalaryResponse(salary.full),schedules=schedules, appliedNumber = appliedNumber, description = description, responsibilities = responsibilities,
+            questions = questions
+        )
+    }
+}
+fun home.product.core.response.OffersWorkCompaniesResponse.mapToOffersWorkCompaniesDto(): OffersWorkCompaniesDto {
     return with(this) {
         OffersWorkCompaniesDto(
             offers.map { it -> OffersDto(it.id, it.title, it.link) } as ArrayList<OffersDto>,

@@ -2,16 +2,22 @@ package home.product.vacancies.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import home.product.core.database.MainEntity
+import home.product.core.database.repository.DataBaseRepository
+import home.product.vacancies.data.mapToMainEntity
 import home.product.vacancies.domain.GetOffersWorkCompaniesUseCase
 import home.product.vacancies.domain.entities.OffersMain
 import home.product.vacancies.domain.entities.OffersWorkCompaniesDto
+import home.product.vacancies.domain.entities.VacanciesDto
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor (
-    private val remoteMockRepo: GetOffersWorkCompaniesUseCase
+    private val remoteMockRepo: GetOffersWorkCompaniesUseCase,
+    val repository: DataBaseRepository
 ) : ViewModel() {
 
     val data = OffersWorkCompaniesDto()
@@ -25,10 +31,17 @@ class MainViewModel @Inject constructor (
         data2
     )
     val responseOffersOffersMain = _responseOffersMain.asStateFlow()
-
+    fun saveInFavorite(favoriteVacance:VacanciesDto){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveVacancies(favoriteVacance.mapToMainEntity())
+        }
+    }
     fun getOffersVacancies() {
         viewModelScope.launch {
+
             remoteMockRepo.getOffersVacancies { objectInfo ->
+               // launch {   repository.saveVacancies(objectInfo.vacancies[0].mapToMainEntity()) }
+
                 _responseOffersVacancies.value = objectInfo
                 val offersMain: MutableList<OffersMain> = mutableListOf(
                     OffersMain.VacanciesNear(

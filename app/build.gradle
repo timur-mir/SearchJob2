@@ -35,18 +35,18 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-  // dynamicFeatures = [':feature1']
     buildFeatures {
       //  buildConfig = true
         viewBinding true
     }
-    dynamicFeatures = []
+    dynamicFeatures = [':favorite',':vacancies']
 }
 
 dependencies {
+
     implementation project(path: ':navigation')
     implementation project(path: ':authorization')
-    implementation project(path: ':vacancies')
+    implementation project(path: ':core')
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'
@@ -80,11 +80,14 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.6.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
-
+    def nav_version = "2.3.0-alpha06"
     //Navigation
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha03"
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.1'
-
+//    api "androidx.navigation:navigation-fragment-ktx:$nav_version"
+//    api "androidx.navigation:navigation-ui-ktx:$nav_version"
+//    api "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
     //AdapterDelegate
     implementation 'com.hannesdorfmann:adapterdelegates4:4.3.0'
 

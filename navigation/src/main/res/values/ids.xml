@@ -5,6 +5,7 @@
     <item name="main_login_host" type="id"/>
    <item name="vacancies_search_host" type="id"/>
     <item name="searchFragment" type="id"/>
+    <item name="favoriteFragment" type="id"/>
     <item name="action_confirmationFragment_to_vacanciesFeature" type="id"/>
 
 </resources>

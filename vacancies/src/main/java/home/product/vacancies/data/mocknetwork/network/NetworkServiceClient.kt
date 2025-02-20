@@ -1,6 +1,6 @@
 package home.product.vacancies.data.mocknetwork.network
 
-import home.howework.data.mocknetwork.model.OffersWorkCompaniesResponse
+import home.product.core.response.OffersWorkCompaniesResponse
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ import javax.inject.Inject
 class NetworkServiceClient @Inject constructor() {
     interface ApiService {
         @GET("jobs")
-        fun getOffersVacancies(): Call<OffersWorkCompaniesResponse>
+        fun getOffersVacancies(): Call<home.product.core.response.OffersWorkCompaniesResponse>
     }
     fun getMockRemoteDataSourceRepo():ApiService{
         return Retrofit.Builder()

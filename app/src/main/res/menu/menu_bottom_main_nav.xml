@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/searchFragment"
+        android:id="@+id/searchFragmentB"
         android:title="Поиск"
         android:icon="@drawable/search" />
     <item
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/favoriteFragmentB"
         android:title="Избранное"
         android:icon="@drawable/heart2"/>
     <item
-        android:id="@+id/responsesFragment"
+        android:id="@+id/responsesFragmentB"
         android:title="Отклики"
         android:icon="@drawable/response2"/>
     <item
-        android:id="@+id/messageFragment"
+        android:id="@+id/messageFragmentB"
         android:title="Сообщения"
         android:icon="@drawable/message2"/>
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/profileFragmentB"
         android:title="Профиль"
         android:icon="@drawable/profile2"/>
 

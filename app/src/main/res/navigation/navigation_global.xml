@@ -6,9 +6,25 @@
     <fragment
         android:id="@+id/mainLoginFragment"
         android:name="home.product.authorization.MainLoginFragment"
-        android:label="MainLoginFragment" />
+        android:label="MainLoginFragment" >
+        <action
+            android:id="@+id/action_mainLoginFragment_to_searchFragment2"
+            app:destination="@id/searchFragment" />
+    </fragment>
     <fragment
         android:id="@id/searchFragment"
+        app:moduleName="vacancies"
         android:name="home.product.vacancies.presentation.SearchFragment"
-        android:label="SearchFragment" />
+    />
+    <fragment
+        android:id="@id/favoriteFragment"
+        app:moduleName="favorite"
+        android:name="home.product.favorite.FavoriteFragment"
+        />
+
+<!--    <include-dynamic-->
+<!--        android:id="@+id/featureVacanciesNav"-->
+<!--        app:moduleName="vacancies"-->
+<!--        app:graphResName="home.product.vacancies.search_vacancies_navigation"-->
+<!--        app:graphPackage="home.product.vacancies"/>-->
 </navigation>

@@ -2,4 +2,5 @@
     <string name="app_name">SearchJob2</string>
     <string name="feature_vacancies">VacanciesFeature</string>
     <string name="title_feature1">Module Title</string>
+    <string name="title_favorite">FavoriteDynamic</string>
 </resources>
