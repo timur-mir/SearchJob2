@@ -19,7 +19,7 @@
     <fragment
         android:id="@id/favoriteFragment"
         app:moduleName="favorite"
-        android:name="home.product.favorite.FavoriteFragment"
+        android:name="home.product.favorite.presentation.FavoriteFragment"
         />
 
 <!--    <include-dynamic-->

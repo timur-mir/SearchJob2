@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="132dp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,16 +35,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="6dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="6dp"
             android:gravity="left">
+
             <TextView
                 android:id="@+id/temporary_job"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:lines="3"
+                android:layout_width="93dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/sfprodisplaymedium"
                 android:hint="Временная работа или подработка"
+                android:lines="3"
+                android:textColor="#fff"
                 android:textColorHint="#fff"
-                android:textColor="#fff" />
+                android:textSize="11dp" />
 
         </LinearLayout>
     </LinearLayout>

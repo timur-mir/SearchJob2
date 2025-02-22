@@ -36,6 +36,7 @@ class MainViewModel @Inject constructor (
             repository.saveVacancies(favoriteVacance.mapToMainEntity())
         }
     }
+
     fun getOffersVacancies() {
         viewModelScope.launch {
 
