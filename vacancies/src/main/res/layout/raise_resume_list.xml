@@ -54,6 +54,7 @@
                 android:id="@+id/raise_resume_btn"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sfprodisplayregular"
                 android:hint="@string/rise"
                 android:background="#222325"
                 android:textColor="#4cb24e"

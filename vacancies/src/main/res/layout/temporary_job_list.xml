@@ -42,12 +42,12 @@
                 android:id="@+id/temporary_job"
                 android:layout_width="93dp"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/sfprodisplaymedium"
+                android:fontFamily="@font/sfprodisplayregular"
                 android:hint="Временная работа или подработка"
                 android:lines="3"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
-                android:textSize="11dp" />
+                />
 
         </LinearLayout>
     </LinearLayout>

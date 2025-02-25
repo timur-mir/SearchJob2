@@ -11,6 +11,7 @@ import home.product.vacancies.R
 
 
 import home.product.vacancies.databinding.ListVacanciesBinding
+import home.product.vacancies.databinding.ListVacanciesConlayoutBinding
 import home.product.vacancies.domain.entities.VacanciesDto
 import home.product.vacancies.presentation.helpScopeRefference
 
@@ -18,7 +19,7 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
     ListAdapter<VacanciesDto, VacanciesHolder>(DiffUtilCallbackVacancies()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacanciesHolder {
         return VacanciesHolder(
-            ListVacanciesBinding.inflate(
+            ListVacanciesConlayoutBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -35,29 +36,29 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
         val item = getItem(position)
         with(holder.binding) {
             if (item.lookingNumber % 10 == 2 || item.lookingNumber % 10 == 3 || item.lookingNumber % 10 == 4) {
-                lookCaption.text = "Сейчас просматривают ${item.lookingNumber.toString()} человека"
+                lookCaption1.text = "Сейчас просматривают ${item.lookingNumber.toString()} человека"
             } else {
-                lookCaption.text = "Сейчас просматривает ${item.lookingNumber.toString()} человек"
+                lookCaption1.text = "Сейчас просматривает ${item.lookingNumber.toString()} человек"
             }
             if (item.isFavorite) {
-                isFavorite.setImageResource(R.drawable.heart)
+                isFavorite1.setImageResource(R.drawable.heart)
             } else {
-                isFavorite.setImageResource(R.drawable.heart2)
+                isFavorite1.setImageResource(R.drawable.heart2)
             }
-            isFavorite.setOnClickListener {
+            isFavorite1.setOnClickListener {
                 helpScopeRefference.turnButton = !helpScopeRefference.turnButton
                 if(helpScopeRefference.turnButton )
                 {
-                    isFavorite.setImageResource(R.drawable.heart)
+                    isFavorite1.setImageResource(R.drawable.heart)
                 }
                 else{
-                    isFavorite.setImageResource(R.drawable.heart2)
+                    isFavorite1.setImageResource(R.drawable.heart2)
                 }
             }
-            vacanctCaption.text = item.title
-            townVacant.text = item.address.town.toString()
-            portfolioCaption.text = item.experience.text.toString()
-            publishedTime.text = "Опубликовано ${item.publishedDate.toString()}"
+            vacanctCaption1.text = item.title
+            townVacant1.text = item.address.town.toString()
+            portfolioCaption1.text = item.experience.text.toString()
+            publishedTime1.text = "Опубликовано ${item.publishedDate.toString()}"
             respond.setOnClickListener {
 
             }
@@ -69,6 +70,7 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
                     OnClick(item.copy(isFavorite=false))
                 }
             }
+
         }
 
     }
@@ -84,4 +86,4 @@ class DiffUtilCallbackVacancies : DiffUtil.ItemCallback<VacanciesDto>() {
         oldItem == newItem
 }
 
-class VacanciesHolder(val binding: ListVacanciesBinding) : RecyclerView.ViewHolder(binding.root)
+class VacanciesHolder(val binding: ListVacanciesConlayoutBinding) : RecyclerView.ViewHolder(binding.root)

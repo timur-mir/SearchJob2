@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_searchVacanciesFragment_to_fullVacanciesFragment"
             app:destination="@id/fullVacanciesFragment" />
+        <action
+            android:id="@+id/action_searchVacanciesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"

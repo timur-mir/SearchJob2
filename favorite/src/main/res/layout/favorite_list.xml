@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/card_view_favorite"
+    android:layout_width="328dp"
+    android:layout_height="233dp"
+    android:backgroundTint="#222235"
+    app:cardCornerRadius="8dp"
+    app:strokeColor="#222235"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/look_caption_favorite"
+                android:layout_width="207dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/now_looking"
+                android:textSize="14sp"
+                android:fontFamily="@font/sfprodisplaymedium"
+                android:textColor="#4cb24e"/>
+            <ImageView
+                android:id="@+id/is_favorite_favorite1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="288dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/heart"
+                android:layout_marginEnd="18dp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/vacanct_caption_favorite"
+                android:layout_width="207dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="16dp"
+                android:textSize="16sp"
+                android:text="@string/Dizayner"
+                android:fontFamily="@font/sfprodisplayregular"
+                android:textColor="#FFF" />
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/company_town_favorite"
+            android:layout_width="89dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/town_vacant_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:fontFamily="@font/sfprodisplaymedium"
+                android:text="Минск"
+                android:textColor="#FFF" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/company_caption_favorite"
+                    android:layout_width="64dp"
+                    android:layout_height="17dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/sfprodisplayregular"
+                    android:text="Мобирикс"
+                    android:textColor="#FFF" />
+                <ImageView
+                    android:id="@+id/check_company_favorite"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/checked" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="168dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp">
+            <ImageView
+                android:id="@+id/portfolio_icon_favorite"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/experience" />
+
+            <TextView
+                android:id="@+id/portfolio_caption_favorite"
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/sfprodisplayregular"
+                android:text="Опыт от 1 года до 3 лет"
+                android:textColor="#FFF"
+                android:textSize="14sp" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/published_time_favorite"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:textColor="#858688"
+            android:fontFamily="@font/sfprodisplayregular"
+            android:text="Опубликовано 20 февраля">
+        </TextView>
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/respond_favorite"
+        android:layout_width="296dp"
+        android:layout_height="32dp"
+        android:padding="0dp"
+        android:layout_marginTop="185dp"
+        android:text="Откликнуться"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:fontFamily="@font/sfprodisplayregular"
+        android:layout_marginStart="16dp"
+        android:gravity="center|center_vertical"
+        android:background="@drawable/button_shape"
+        >
+    </androidx.appcompat.widget.AppCompatButton>
+
+</com.google.android.material.card.MaterialCardView>

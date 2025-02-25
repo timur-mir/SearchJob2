@@ -33,9 +33,6 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
     @Inject
     lateinit var mainViewModel: MainViewModel
 
-    //    private val mainViewModel: MainViewModel by viewModels {
-//        DaggerVacanciesComponent.builder().build().mainViewModelFactory()
-//    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -98,9 +95,7 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
         val action =
             FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(vacancy)
         findNavController().navigate(action)
-
     }
-
 }
 
 object helpScopeRefference {

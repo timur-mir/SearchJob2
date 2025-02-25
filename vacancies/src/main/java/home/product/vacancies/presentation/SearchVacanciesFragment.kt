@@ -22,6 +22,7 @@ import home.product.vacancies.presentation.adapters.OffersMainAdapter
 import home.product.vacancies.databinding.FragmentSearchVacanciesBinding
 import home.product.vacancies.di.DaggerVacanciesComponent
 import home.product.vacancies.di.DomainModule
+import home.product.vacancies.domain.entities.VacanciesDto
 import home.product.vacancies.presentation.adapters.VacanciesAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -34,11 +35,8 @@ class SearchVacanciesFragment : Fragment() {
     val binding get() = _binding!!
     @Inject
 lateinit var mainViewModel:MainViewModel
-//private val mainViewModel: MainViewModel by viewModels {
-//    DaggerVacanciesComponent.builder().build().mainViewModelFactory()
-//}
     private val vacanciesAdapter =
-        VacanciesAdapter { vacancy->  }
+        VacanciesAdapter { vacancy-> toDetail(vacancy)  }
     private val offersMainAdapter =
         OffersMainAdapter { link ->
             Toast.makeText(requireContext(),"Переход на сайт:$link",Toast.LENGTH_LONG).show()
@@ -49,7 +47,6 @@ lateinit var mainViewModel:MainViewModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-   //    DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())).build().inject(this)
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,7 +59,6 @@ lateinit var mainViewModel:MainViewModel
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      //  DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())). build().inject(this)
         with(binding.topOffers) {
             adapter = offersMainAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
@@ -81,10 +77,8 @@ lateinit var mainViewModel:MainViewModel
             findNavController().navigate(action)
         }
     }
-
     override fun onStart() {
         super.onStart()
-       // DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())).build().inject(this)
         lifecycleScope.launch {
             mainViewModel!!.getOffersVacancies()
             mainViewModel!!.responseOffersOffersMain.onEach { list ->
@@ -95,7 +89,14 @@ lateinit var mainViewModel:MainViewModel
                 binding.getAllVacancies.text="Ещё ${listVacancies.size-3} вакансии"
                 vacanciesAdapter.submitList(listVacancies.take(3))
             }.launchIn(this)
-
         }
+    }
+    private fun toDetail(vacancy: VacanciesDto) {
+        if (vacancy.isFavorite) {
+            mainViewModel.saveInFavorite(vacancy)
+        }
+       val action =SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(vacancy)
+
+        findNavController().navigate(action)
     }
 }
