@@ -17,14 +17,29 @@
         android:name="home.product.vacancies.presentation.SearchFragment"
     />
     <fragment
-        android:id="@id/favoriteFragment"
+        android:id="@id/favoriteMainFragment"
         app:moduleName="favorite"
-        android:name="home.product.favorite.presentation.FavoriteFragment"
+        android:name="home.product.favorite.presentation.FavoriteMainFragment"
+        />
+    <fragment
+        android:id="@id/messageFragment"
+        app:moduleName="vacancies"
+        android:name="home.product.vacancies.presentation.usemessage.MessageFragment"
+        />
+    <fragment
+        android:id="@id/responsesFragment"
+        app:moduleName="vacancies"
+        android:name="home.product.vacancies.presentation.useresponse.ResponsesFragment"
+        />
+    <fragment
+        android:id="@id/profileFragment"
+        app:moduleName="vacancies"
+        android:name="home.product.vacancies.presentation.useprofile.ProfileFragment"
         />
 
-<!--    <include-dynamic-->
-<!--        android:id="@+id/featureVacanciesNav"-->
-<!--        app:moduleName="vacancies"-->
-<!--        app:graphResName="home.product.vacancies.search_vacancies_navigation"-->
-<!--        app:graphPackage="home.product.vacancies"/>-->
+    <include-dynamic
+        android:id="@+id/featureFavoriteNav"
+        app:moduleName="favorite"
+        app:graphResName="home.product.favorite.nav_graph"
+        app:graphPackage="home.product.favorite"/>
 </navigation>

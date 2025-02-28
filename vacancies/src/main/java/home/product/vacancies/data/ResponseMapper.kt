@@ -22,6 +22,7 @@ fun VacanciesDto.mapToMainEntity():MainEntity{
         )
     }
 }
+
 fun home.product.core.response.OffersWorkCompaniesResponse.mapToOffersWorkCompaniesDto(): OffersWorkCompaniesDto {
     return with(this) {
         OffersWorkCompaniesDto(

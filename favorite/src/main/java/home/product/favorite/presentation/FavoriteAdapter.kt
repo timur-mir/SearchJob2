@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import home.product.core.database.MainEntity
 import home.product.favorite.R
 import home.product.favorite.databinding.FavoriteListBinding
+import home.product.favorite.presentation.FavoriteFragment.helpScopeReference2.cardScopeTurnButton
+
 
 class FavoriteAdapter(private val OnClick: (MainEntity) -> Unit) :
     ListAdapter<MainEntity, FavoriteAdapter.FavoriteVacanciesHolder>(DiffUtilCallbackFavoriteVacancies()){
@@ -30,9 +32,11 @@ class FavoriteAdapter(private val OnClick: (MainEntity) -> Unit) :
         val item = getItem(position)
         with(holder.binding) {
             if (item.lookingNumber % 10 == 2 || item.lookingNumber % 10 == 3 || item.lookingNumber % 10 == 4) {
-                lookCaptionFavorite.text = "Сейчас просматривают ${item.lookingNumber.toString()} человека"
+                lookCaptionFavorite.text =
+                    "Сейчас просматривают ${item.lookingNumber.toString()} человека"
             } else {
-                lookCaptionFavorite.text = "Сейчас просматривает ${item.lookingNumber.toString()} человек"
+                lookCaptionFavorite.text =
+                    "Сейчас просматривает ${item.lookingNumber.toString()} человек"
             }
             if (item.isFavorite) {
                 isFavoriteFavorite1.setImageResource(R.drawable.heart)
@@ -40,26 +44,18 @@ class FavoriteAdapter(private val OnClick: (MainEntity) -> Unit) :
                 isFavoriteFavorite1.setImageResource(R.drawable.heart2)
             }
             isFavoriteFavorite1.setOnClickListener {
-                if (item.isFavorite) {
-                    isFavoriteFavorite1.setImageResource(R.drawable.heart)
-                } else {
-                    isFavoriteFavorite1.setImageResource(R.drawable.heart2)
-                }
+                OnClick(item.copy(isFavorite = false))
             }
             vacanctCaptionFavorite.text = item.title
             townVacantFavorite.text = item.address.town.toString()
-            portfolioCaptionFavorite.text = item.experience.text.toString()
+            portfolioCaptionFavorite.text = item.experience.previewText
             publishedTimeFavorite.text = "Опубликовано ${item.publishedDate.toString()}"
             respondFavorite.setOnClickListener {
 
             }
             holder.binding.root.setOnClickListener {
-                if (item.isFavorite) {
-                 OnClick(item.copy(isFavorite=true))}
-                else
-                {
-                    OnClick(item.copy(isFavorite=false))
-                }
+                cardScopeTurnButton=true
+                OnClick(item)
             }
 
         }

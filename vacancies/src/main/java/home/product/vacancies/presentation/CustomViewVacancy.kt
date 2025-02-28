@@ -22,7 +22,7 @@ class CustomViewVacancy@JvmOverloads constructor(
         cv.isFavorite1.setImageResource(imageRes)
     }
     fun setTextForVacancyCaption(text:String){
-        cv.vacanctCaption1.text=text
+        cv.vacancyCaption1.text=text
     }
     fun setTextForTown(text:String){
         cv.townVacant1.text=text

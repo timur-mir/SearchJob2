@@ -1,5 +1,7 @@
 package home.product.core.database
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -29,4 +31,48 @@ data class MainEntity (
     var description: String?,
     var responsibilities: String,
     var questions: ArrayList<String> = arrayListOf()
-        )
+        ):Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.readInt(),
+        parcel.readString().toString(),
+        TODO("address"),
+        parcel.readString().toString(),
+        TODO("experience"),
+        parcel.readString().toString(),
+        parcel.readByte() != 0.toByte(),
+        TODO("salary"),
+        TODO("schedules"),
+        parcel.readInt(),
+        parcel.readString(),
+        parcel.readString().toString(),
+        TODO("questions")
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
+        parcel.writeInt(lookingNumber)
+        parcel.writeString(title)
+        parcel.writeString(company)
+        parcel.writeString(publishedDate)
+        parcel.writeByte(if (isFavorite) 1 else 0)
+        parcel.writeInt(appliedNumber)
+        parcel.writeString(description)
+        parcel.writeString(responsibilities)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<MainEntity> {
+        override fun createFromParcel(parcel: Parcel): MainEntity {
+            return MainEntity(parcel)
+        }
+
+        override fun newArray(size: Int): Array<MainEntity?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

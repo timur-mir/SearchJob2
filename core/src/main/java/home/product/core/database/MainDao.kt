@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MainDao {
@@ -12,7 +13,7 @@ interface MainDao {
    suspend fun insertVacancies(vacancies: MainEntity)
     @Transaction
     @Query("SELECT * FROM ${"favorite"} ")
-    suspend  fun getAllVacancies():List<MainEntity>
+   fun getAllVacancies(): Flow<List<MainEntity>>
 
     @Query("SELECT * FROM ${"favorite"} WHERE title LIKE :vacancies")
     suspend fun getMainEntity(vacancies: String): MainEntity

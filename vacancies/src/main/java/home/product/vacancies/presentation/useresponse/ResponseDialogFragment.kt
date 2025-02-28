@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import home.product.vacancies.data.utilits.convertToPixels
 import home.product.vacancies.databinding.ResponseDialogFragmentBinding
 
 class ResponseDialogFragment:DialogFragment() {
@@ -22,7 +23,7 @@ class ResponseDialogFragment:DialogFragment() {
     override fun onStart() {
         super.onStart()
         dialog?.window?.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT
         )
     }

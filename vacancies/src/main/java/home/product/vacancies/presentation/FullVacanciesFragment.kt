@@ -1,6 +1,7 @@
 package home.product.vacancies.presentation
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -12,6 +13,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import home.product.searchjob2.App
+import home.product.searchjob2.presentation.MainActivity
+import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.addElement
 import home.product.vacancies.data.utilits.ItemOffsetDecoration
 import home.product.vacancies.R
 import home.product.vacancies.databinding.FullVacanciesFragmentBinding
@@ -91,13 +94,19 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
     private fun toDetail(vacancy: VacanciesDto) {
         if (vacancy.isFavorite) {
             mainViewModel.saveInFavorite(vacancy)
+            addElement = true
+            MainActivity.helpScopeReference3.elementDelete = false
+        } else {
+            mainViewModel.deleteVacancy(vacancy)
+            MainActivity.helpScopeReference3.elementDelete = true
+            addElement = false
         }
-        val action =
-            FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(vacancy)
-        findNavController().navigate(action)
+        if (helpScopeReference.cardScopeTurnButton) {
+            val action =
+                FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(vacancy)
+            findNavController().navigate(action)
+            helpScopeReference.cardScopeTurnButton = false
+        }
     }
 }
 
-object helpScopeRefference {
-    var turnButton = false
-}

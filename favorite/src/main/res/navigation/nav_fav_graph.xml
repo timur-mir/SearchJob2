@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_fav_graph"
+    app:startDestination="@id/favoriteFragment">
+
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="home.product.favorite.presentation.FavoriteFragment"
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_favoriteFragmentDetail"
+            app:destination="@id/favoriteFragmentDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragmentDetail"
+        android:name="home.product.favorite.presentation.FavoriteFragmentDetail"
+        android:label="FavoriteFragmentDetail">
+    <argument
+        android:name="aboutVacancy"
+        app:argType="home.product.core.database.MainEntity" />
+    </fragment>
+</navigation>

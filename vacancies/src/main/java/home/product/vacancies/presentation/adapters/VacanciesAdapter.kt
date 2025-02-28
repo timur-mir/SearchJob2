@@ -8,12 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import home.product.vacancies.R
-
-
-import home.product.vacancies.databinding.ListVacanciesBinding
 import home.product.vacancies.databinding.ListVacanciesConlayoutBinding
 import home.product.vacancies.domain.entities.VacanciesDto
-import home.product.vacancies.presentation.helpScopeRefference
+import home.product.vacancies.presentation.helpScopeReference
+import home.product.vacancies.presentation.helpScopeReference.cardScopeTurnButton
 
 class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
     ListAdapter<VacanciesDto, VacanciesHolder>(DiffUtilCallbackVacancies()) {
@@ -45,30 +43,30 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
             } else {
                 isFavorite1.setImageResource(R.drawable.heart2)
             }
+
             isFavorite1.setOnClickListener {
-                helpScopeRefference.turnButton = !helpScopeRefference.turnButton
-                if(helpScopeRefference.turnButton )
+                helpScopeReference.turnButton = !helpScopeReference.turnButton
+                if(helpScopeReference.turnButton )
                 {
                     isFavorite1.setImageResource(R.drawable.heart)
+                    OnClick(item.copy(isFavorite=true))
                 }
                 else{
                     isFavorite1.setImageResource(R.drawable.heart2)
+                    OnClick(item.copy(isFavorite=false))
                 }
             }
-            vacanctCaption1.text = item.title
+
+            vacancyCaption1.text = item.title
             townVacant1.text = item.address.town.toString()
-            portfolioCaption1.text = item.experience.text.toString()
+            portfolioCaption1.text = item.experience.previewText
             publishedTime1.text = "Опубликовано ${item.publishedDate.toString()}"
             respond.setOnClickListener {
 
             }
             holder.binding.root.setOnClickListener {
-                if (helpScopeRefference.turnButton)
-                { OnClick(item.copy(isFavorite=true))}
-                else
-                {
-                    OnClick(item.copy(isFavorite=false))
-                }
+                cardScopeTurnButton=true
+                OnClick(item) }
             }
 
         }
@@ -76,7 +74,7 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
     }
 
 
-}
+
 
 class DiffUtilCallbackVacancies : DiffUtil.ItemCallback<VacanciesDto>() {
     override fun areItemsTheSame(oldItem: VacanciesDto, newItem: VacanciesDto): Boolean =

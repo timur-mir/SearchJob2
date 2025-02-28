@@ -36,6 +36,11 @@ class MainViewModel @Inject constructor (
             repository.saveVacancies(favoriteVacance.mapToMainEntity())
         }
     }
+    fun deleteVacancy(vacancy: VacanciesDto){
+        viewModelScope.launch {
+            repository.deleteVacancies(vacancy.title)
+        }
+    }
 
     fun getOffersVacancies() {
         viewModelScope.launch {

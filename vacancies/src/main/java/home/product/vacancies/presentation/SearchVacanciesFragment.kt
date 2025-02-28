@@ -2,6 +2,7 @@ package home.product.vacancies.presentation
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,6 +17,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import home.product.core.database.di.CoreComponent
 import home.product.searchjob2.App.Companion.coreComponent
+import home.product.searchjob2.presentation.MainActivity
+import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.addElement
+import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.elementDelete
 import home.product.vacancies.data.utilits.ItemOffsetDecoration
 import home.product.vacancies.data.utilits.ItemOffsetDecoration2
 import home.product.vacancies.presentation.adapters.OffersMainAdapter
@@ -24,6 +28,7 @@ import home.product.vacancies.di.DaggerVacanciesComponent
 import home.product.vacancies.di.DomainModule
 import home.product.vacancies.domain.entities.VacanciesDto
 import home.product.vacancies.presentation.adapters.VacanciesAdapter
+import home.product.vacancies.presentation.helpScopeReference.cardScopeTurnButton
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -94,9 +99,25 @@ lateinit var mainViewModel:MainViewModel
     private fun toDetail(vacancy: VacanciesDto) {
         if (vacancy.isFavorite) {
             mainViewModel.saveInFavorite(vacancy)
+            addElement=true
+            elementDelete=false
         }
-       val action =SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(vacancy)
-
-        findNavController().navigate(action)
+        else {
+            mainViewModel.deleteVacancy(vacancy)
+            elementDelete=true
+            addElement=false
+        }
+        if(cardScopeTurnButton) {
+            val action =
+                SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(
+                    vacancy
+                )
+            findNavController().navigate(action)
+            cardScopeTurnButton=false
+        }
     }
+}
+object helpScopeReference {
+    var turnButton = false
+    var cardScopeTurnButton=false
 }

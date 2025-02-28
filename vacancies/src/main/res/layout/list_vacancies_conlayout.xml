@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="328dp"
+    android:layout_height="233dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 <com.google.android.material.card.MaterialCardView
     android:id="@+id/card_view_1"
-    android:layout_width="328dp"
-    android:layout_height="233dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="0dp"
     android:backgroundTint="#222235"
     app:cardCornerRadius="8dp"
-    app:strokeColor="#222235"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:strokeColor="#222235">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +53,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/vacanct_caption_1"
+                android:id="@+id/vacancy_caption_1"
                 android:layout_width="207dp"
                 android:layout_height="19dp"
                 android:layout_marginStart="16dp"
@@ -50,66 +62,84 @@
                 android:fontFamily="@font/sfprodisplayregular"
                 android:textColor="#FFF" />
         </RelativeLayout>
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/company_town"
             android:layout_width="89dp"
             android:layout_height="38dp"
-            android:layout_marginTop="6dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/town_vacant_1"
-                android:layout_width="wrap_content"
-                android:layout_height="17dp"
-                android:fontFamily="@font/sfprodisplaymedium"
-                android:text="Минск"
-                android:textColor="#FFF" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/town_vacant_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="17dp"
+                            android:fontFamily="@font/sfprodisplaymedium"
+                            android:text="Минск"
+                            android:textColor="#FFF"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/company_caption_1"
                 android:layout_width="64dp"
                 android:layout_height="17dp"
-                android:textSize="14sp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/sfprodisplayregular"
                 android:text="Мобирикс"
-                android:textColor="#FFF" />
-            <ImageView
+                app:layout_constraintStart_toStartOf="@id/town_vacant_1"
+                app:layout_constraintTop_toBottomOf="@id/town_vacant_1"
+                android:includeFontPadding="false"
+                android:textColor="#FFF"
+                android:textSize="14sp"
+            />
+
+            <TextView
                 android:id="@+id/check_company_1"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/checked" />
-        </RelativeLayout>
-        </LinearLayout>
-        <RelativeLayout
+                android:background="@drawable/checked"
+                android:includeFontPadding="false"
+                app:layout_constraintBaseline_toBaselineOf="@+id/company_caption_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/company_caption_1"
+                app:layout_constraintTop_toTopOf="@id/company_caption_1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/portfolio_scope"
             android:layout_width="168dp"
             android:layout_height="17dp"
             android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp" >
+
             <ImageView
                 android:id="@+id/portfolio_icon_1"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
-                android:layout_alignParentStart="true"
+                app:layout_constraintStart_toStartOf="@id/portfolio_scope"
+                app:layout_constraintTop_toTopOf="@id/portfolio_scope"
                 android:src="@drawable/experience" />
 
             <TextView
                 android:id="@+id/portfolio_caption_1"
-                android:layout_width="146dp"
+                android:layout_width="144dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
+                android:includeFontPadding="false"
                 android:fontFamily="@font/sfprodisplayregular"
-                android:text="Опыт от 1 года до 3 лет"
+                android:paddingLeft="4dp"
+                android:text="Опыт работы от 1 до 3 лет"
                 android:textColor="#FFF"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/portfolio_icon_1"
+                app:layout_constraintTop_toTopOf="@+id/portfolio_icon_1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:id="@+id/published_time_1"
-            android:layout_width="168dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
@@ -137,3 +167,5 @@
     </androidx.appcompat.widget.AppCompatButton>
 
     </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@ class FavoriteViewModel @Inject constructor(val repository: DataBaseRepository) 
 
     fun loadFavoriteVacancies() {
         viewModelScope.launch {
-            _responseVacancies.postValue(repository.getAllVacancies())
+            (repository.getAllVacancies().collect{_responseVacancies.postValue(it)})
         }
     }
     fun saveVacancy(vacancy:MainEntity){

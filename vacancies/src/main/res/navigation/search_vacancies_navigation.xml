@@ -17,20 +17,17 @@
             android:id="@+id/action_searchVacanciesFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="home.product.vacancies.presentation.usefavorite.FavoriteFragment"
-        android:label="FavoriteFragment" />
-    <fragment
-        android:id="@+id/messageFragment"
+        android:id="@id/messageFragment"
         android:name="home.product.vacancies.presentation.usemessage.MessageFragment"
         android:label="MessageFragment" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@id/profileFragment"
         android:name="home.product.vacancies.presentation.useprofile.ProfileFragment"
         android:label="ProfileFragment" />
     <fragment
-        android:id="@+id/responsesFragment"
+        android:id="@id/responsesFragment"
         android:name="home.product.vacancies.presentation.useresponse.ResponsesFragment"
         android:label="ResponsesFragment" />
     <fragment
