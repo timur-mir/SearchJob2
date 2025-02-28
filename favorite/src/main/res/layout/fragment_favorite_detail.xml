@@ -1,451 +1,459 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="360dp"
+    android:layout_height="1328dp"
     android:background="#000">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_level_f"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/top_level_f"
         android:background="#000"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/level_1_f"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toTopOf="@id/top_level_f"
-            android:id="@+id/level_1_f">
+            app:layout_constraintTop_toTopOf="@id/top_level">
 
             <ImageView
                 android:id="@+id/is_back_f"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="50dp"
                 android:src="@drawable/arrow"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/is_look_f"
-                android:layout_width="28dp"
+            <LinearLayout
+                android:layout_width="108dp"
                 android:layout_height="28dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="190dp"
-                android:src="@drawable/looking"
-                app:layout_constraintStart_toEndOf="@id/is_back_f"
-                app:layout_constraintTop_toTopOf="@id/is_back_f" />
+                android:layout_marginStart="236dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/is_share_f"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="18dp"
-                android:src="@drawable/share"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@id/is_look_f"
-                app:layout_constraintTop_toTopOf="@id/is_look_f" />
-            <ImageView
-                android:id="@+id/is_favourite_f"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/heart2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@id/is_share_f"
-                app:layout_constraintTop_toTopOf="@id/is_share_f" />
+                <ImageView
+                    android:id="@+id/is_look_f"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/looking" />
+
+                <ImageView
+                    android:id="@+id/is_share_f"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="12dp"
+                    android:src="@drawable/share">
+
+                </ImageView>
+
+                <ImageView
+                    android:id="@+id/is_favourite_f"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="12dp"
+                    android:src="@drawable/heart2" />
+
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/level_1_f"
-            android:id="@+id/level_2_f">
+
+        <LinearLayout
+            android:id="@+id/level_2_f"
+            android:layout_width="217dp"
+            android:layout_height="115dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="100dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
             <TextView
                 android:id="@+id/vacancy_f"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="207dp"
+                android:layout_height="26dp"
+                android:fontFamily="@font/sfprodisplayregular"
+                android:hint="Профессия"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
-                android:textSize="22sp"
-                android:hint="Профессия"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/salary_f"
+                android:layout_width="207dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/sfprodisplayregular"
+                android:text="Уровень дохода"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/level_3_f"
+                android:layout_width="217dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/level_2_f">
+
+                <TextView
+                    android:id="@+id/expirience_f"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfprodisplayregular"
+                    android:includeFontPadding="false"
+                    android:hint="Опыт работы"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/shedules_f"
+                    android:layout_width="195dp"
+                    android:layout_height="17dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/sfprodisplayregular"
+                    android:includeFontPadding="false"
+                    android:hint="Полная занятость"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/level_6_f"
+            android:layout_width="328dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="239dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/level_looking_f"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:background="@drawable/custom_block"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/level_6_f"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/applied_number_f"
+                    android:layout_width="107dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/sfprodisplayregular"
+                    android:hint="147 человек уже откликнулись"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/response_img_f"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="136dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/response_img"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/level_looking2_f"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/custom_block"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@id/level_looking_f"
+                app:layout_constraintTop_toTopOf="@id/level_looking_f">
+
+                <TextView
+                    android:id="@+id/looked_some_f"
+                    android:layout_width="107dp"
+                    android:layout_height="34dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/sfprodisplayregular"
+                    android:hint="2 человека сейчас смотрят"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/is_looked_f"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="302dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/looked_img"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/level_2_f"
-            android:id="@+id/level_3_f">
-            <TextView
-                android:id="@+id/salary_f"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
-                android:textSize="16sp"
-                android:hint="Уровень дохода"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/level_3_f"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/level_3_f"
-            android:id="@+id/level_4_f">
-            <TextView
-                android:id="@+id/expirience_f"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
-                android:textSize="16sp"
-                android:hint="Опыт работы"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/level_4_f"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/level_4_f"
-            android:id="@+id/level_5_f">
-            <TextView
-                android:id="@+id/shedules_f"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
-                android:textSize="16sp"
-                android:hint="Полная занятость"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/level_5_f"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            app:layout_constraintTop_toBottomOf="@id/level_5_f"
-            android:id="@+id/level_6_f">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/custom_block"
-                    android:layout_marginTop="26dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/applied_number_f"
-                        android:layout_width="132dp"
-                        android:layout_height="38dp"
-                        android:hint=""
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="16sp" />
-                    <ImageView
-                        android:id="@+id/response_img_f"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="4dp"
-                        android:src="@drawable/response_img"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/custom_block"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="26dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/looked_some_f"
-                        android:layout_width="120dp"
-                        android:layout_height="56dp"
-                        android:hint="2 человека сейчас смотрят"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="16sp" />
-
-                    <ImageView
-                        android:id="@+id/is_looked_f"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="4dp"
-                        android:src="@drawable/looked_img" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:layout_constraintTop_toBottomOf="@id/level_6_f"
+            android:id="@+id/level_7_f"
+            android:layout_width="328dp"
+            android:layout_height="134dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="313dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/level_7_f">
-            <LinearLayout
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="18dp"
+                app:layout_constraintTop_toBottomOf="parent">
 
-                    android:orientation="horizontal">
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_view_2_f"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#222235"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#222235">
 
-                    <TextView
-                        android:id="@+id/company_caption_f"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="16sp"
-                        />
-                    <ImageView
-                        android:id="@+id/is_company_checked_f"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginStart="10dp"
-                        android:src="@drawable/check"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="12dp">
-                    <ImageView
-                        android:id="@+id/is_map_f"
-                        android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/mercuriy"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="12dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/company_address_f"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="16sp"
-                        android:hint="Адрес компании"
-                        />
-                </LinearLayout>
-            </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/main_company_layer_f"
+                        android:layout_width="296dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/company_f"
+                            android:layout_width="100dp"
+                            android:layout_height="19dp"
+                            app:layout_constraintStart_toStartOf="@+id/company_address_f"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/company_caption_f"
+                                android:layout_width="76dp"
+                                android:layout_height="19dp"
+                                android:fontFamily="@font/sfprodisplayregular"
+                                android:gravity="start"
+                                android:includeFontPadding="false"
+                                android:text="Мобирикс"
+                                android:textColor="#fff"
+                                android:textColorHint="#fff"
+                                android:textSize="16sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/company_f" />
+
+                            <ImageView
+                                android:id="@+id/is_company_checked_f"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_marginStart="2dp"
+                                android:layout_marginTop="2dp"
+                                android:src="@drawable/check"
+                                app:layout_constraintStart_toEndOf="@id/company_caption_f"
+                                app:layout_constraintTop_toTopOf="@id/company_caption_f" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <ImageView
+                            android:id="@+id/is_map"
+                            android:layout_width="296dp"
+                            android:layout_height="58dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/photo_map"
+                            app:layout_constraintBottom_toBottomOf="@id/main_company_layer_f"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/main_company_layer_f" />
+
+                        <TextView
+                            android:id="@+id/company_address_f"
+                            android:layout_width="176dp"
+                            android:layout_height="17dp"
+                            android:hint="Адрес компании"
+                            android:textColor="#fff"
+                            android:textColorHint="#fff"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="@id/main_company_layer_f"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/level_8_f"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="328dp"
+            android:layout_height="187dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="463dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/level_7_f">
+            app:layout_constraintTop_toTopOf="@+id/top_level_f">
 
             <TextView
                 android:id="@+id/about_company_f"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/sfprodisplayregular"
+                android:includeFontPadding="false"
                 android:hint="O компании детально "
                 android:textColor="#fff"
                 android:textColorHint="#fff"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/level_8_f"/>
+                app:layout_constraintTop_toTopOf="@+id/level_8_f" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/level_9_f"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="666dp"
             android:background="#000"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/level_8_f">
+            app:layout_constraintTop_toTopOf="@id/top_level_f">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="Ваши задачи"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="34dp"
-                    android:orientation="horizontal">
+                app:layout_constraintTop_toTopOf="@+id/level_9_f" />
 
-                    <TextView
-                        style="bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Ваши задачи"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/level_9_f"/>
 
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:id="@+id/you_tasks_f"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="Ваши задачи..."
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"/>
-                </LinearLayout>
-            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/level_tasks_f"
+            android:layout_width="328dp"
+            android:layout_height="204dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="693dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/top_level_f">
+
+            <TextView
+                android:id="@+id/you_tasks_f"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/sfprodisplayregular"
+                android:paddingTop="4dp"
+                android:hint="Ваши задачи..."
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:textSize="14sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/level_10_f"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="198dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="934dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/level_9_f">
-            <LinearLayout
+            app:layout_constraintTop_toTopOf="@+id/top_level_f">
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfprodisplayregular"
+                android:text="Задайте вопрос работодателю"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:textSize="16sp"
-                        android:text="Задайте вопрос работодателю"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/level_10_f"
-                        />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:textColorHint="#fff"
-                        android:text="Он получит его с откликом на вакансию" />
-                </LinearLayout>
-            </LinearLayout>
+                app:layout_constraintTop_toTopOf="@id/level_10_f" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="255dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="959dp"
+            android:fontFamily="@font/sfprodisplayregular"
+            android:text="Он получит его с откликом на вакансию"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/top_level_f" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/level_11_f"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginEnd="12dp"
+            android:layout_width="242dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="992dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/level_10_f">
+            app:layout_constraintTop_toTopOf="@+id/top_level_f">
+
             <LinearLayout
                 android:id="@+id/question_container_f"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-            </LinearLayout>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/level_12_f"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="330dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="1164dp"
+            android:layout_marginStart="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/level_11_f">
-
+            app:layout_constraintTop_toTopOf="@+id/top_level_f">
 
             <TextView
-                android:id="@+id/response_click_buttonF"
+                android:id="@+id/response_click_button_f"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_shape2"
                 android:gravity="center"
                 android:text="Откликнуться"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
-                android:background="@drawable/edit_shape2"
                 android:textSize="16sp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/level_12_f"/>
+                app:layout_constraintTop_toTopOf="@+id/level_12_f" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="74dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/level_12_f"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/level_12_f" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

@@ -37,8 +37,7 @@ class DetailFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.responseClickButton.setOnClickListener {
-            val responseDialogFragmentDialog = ResponseDialogFragment()
-            fragmentManager?.let { it1 -> responseDialogFragmentDialog.show(it1, "dialog...") }
+            findNavController().navigate(R.id.responseDialogFragment)
         }
         if (arg.aboutVacancy.appliedNumber != 0) {
             if (arg.aboutVacancy.appliedNumber == 1 && arg.aboutVacancy.appliedNumber != 11)
@@ -62,8 +61,7 @@ class DetailFragment : Fragment() {
         } else {
             binding.isFavourite.setImageResource(R.drawable.heart2)
         }
-
-        binding.lookedSome
+        binding.lookedSome.text = arg.aboutVacancy.title
         binding.vacancy.text = arg.aboutVacancy.title
         binding.salary.text = arg.aboutVacancy.salary.full
         binding.expirience.text = arg.aboutVacancy.experience.text

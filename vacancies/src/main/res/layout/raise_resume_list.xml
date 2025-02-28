@@ -1,65 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/raise_resume_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/resume_search_card_view"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="132dp"
-    android:layout_height="120dp"
+    android:layout_height="120dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/resume_search_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="0dp"
     android:layout_gravity="center_vertical"
     android:backgroundTint="#222235"
-    app:cardCornerRadius="14dp"
+    app:cardCornerRadius="8dp"
     app:strokeWidth="0dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:padding="0dp">
-
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        >
             <ImageView
                 android:id="@+id/is_offers_resume_rise"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:src="@drawable/resume_rise"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
-
+                app:layout_constraintTop_toTopOf="parent"
+                 />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="112dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="58dp"
+            android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="2dp"
-            android:gravity="left"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/raise_resume"
-                android:layout_width="116dp"
-                android:layout_height="wrap_content"
+                android:layout_width="112dp"
+                android:layout_height="34dp"
+                android:includeFontPadding="false"
+                android:textSize="14sp"
                 android:hint="@string/rise_resume"
+                android:fontFamily="@font/sfprodisplayregular"
                 android:lines="2"
                 android:textColor="#fff"
                 android:textColorHint="#fff" />
 
             <TextView
                 android:id="@+id/raise_resume_btn"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:layout_width="112dp"
+                android:layout_height="17dp"
+                android:includeFontPadding="false"
                 android:fontFamily="@font/sfprodisplayregular"
                 android:hint="@string/rise"
-                android:background="#222325"
+                android:textSize="14sp"
                 android:textColor="#4cb24e"
-                android:textColorHint="#fff"
+                android:textColorHint="#4cb24e"
                 />
         </LinearLayout>
-    </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

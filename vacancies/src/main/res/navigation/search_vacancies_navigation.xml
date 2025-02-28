@@ -30,6 +30,8 @@
         android:id="@id/responsesFragment"
         android:name="home.product.vacancies.presentation.useresponse.ResponsesFragment"
         android:label="ResponsesFragment" />
+    <dialog  android:id="@+id/responseDialogFragment"
+        android:name="home.product.vacancies.presentation.useresponse.ResponseDialogFragment"/>
     <fragment
         android:id="@+id/fullVacanciesFragment"
         android:name="home.product.vacancies.presentation.FullVacanciesFragment"

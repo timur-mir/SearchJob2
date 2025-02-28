@@ -72,6 +72,10 @@ class MainViewModel @Inject constructor (
 
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+    }
 }
 
 

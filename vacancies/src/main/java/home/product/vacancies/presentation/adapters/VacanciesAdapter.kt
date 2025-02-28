@@ -46,14 +46,12 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
 
             isFavorite1.setOnClickListener {
                 helpScopeReference.turnButton = !helpScopeReference.turnButton
-                if(helpScopeReference.turnButton )
-                {
+                if (helpScopeReference.turnButton) {
                     isFavorite1.setImageResource(R.drawable.heart)
-                    OnClick(item.copy(isFavorite=true))
-                }
-                else{
+                    OnClick(item.copy(isFavorite = true))
+                } else {
                     isFavorite1.setImageResource(R.drawable.heart2)
-                    OnClick(item.copy(isFavorite=false))
+                    OnClick(item.copy(isFavorite = false))
                 }
             }
 
@@ -65,9 +63,17 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
 
             }
             holder.binding.root.setOnClickListener {
-                cardScopeTurnButton=true
-                OnClick(item) }
+                cardScopeTurnButton = true
+                //OnClick(item) }
+                if (helpScopeReference.turnButton) {
+                    isFavorite1.setImageResource(R.drawable.heart)
+                    OnClick(item.copy(isFavorite = true))
+                } else {
+                    isFavorite1.setImageResource(R.drawable.heart2)
+                    OnClick(item.copy(isFavorite = false))
+                }
             }
+        }
 
         }
 

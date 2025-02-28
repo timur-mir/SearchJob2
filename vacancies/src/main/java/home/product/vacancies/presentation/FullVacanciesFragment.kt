@@ -21,6 +21,8 @@ import home.product.vacancies.databinding.FullVacanciesFragmentBinding
 import home.product.vacancies.di.DaggerVacanciesComponent
 import home.product.vacancies.domain.entities.VacanciesDto
 import home.product.vacancies.presentation.adapters.VacanciesAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -92,20 +94,40 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
     }
 
     private fun toDetail(vacancy: VacanciesDto) {
-        if (vacancy.isFavorite) {
-            mainViewModel.saveInFavorite(vacancy)
-            addElement = true
-            MainActivity.helpScopeReference3.elementDelete = false
-        } else {
-            mainViewModel.deleteVacancy(vacancy)
-            MainActivity.helpScopeReference3.elementDelete = true
-            addElement = false
-        }
-        if (helpScopeReference.cardScopeTurnButton) {
-            val action =
-                FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(vacancy)
-            findNavController().navigate(action)
-            helpScopeReference.cardScopeTurnButton = false
+        lifecycleScope.launch(Dispatchers.Main) {
+            if (vacancy.isFavorite && helpScopeReference.cardScopeTurnButton) {
+                mainViewModel.saveInFavorite(vacancy)
+                addElement = true
+                MainActivity.helpScopeReference3.elementDelete = false
+
+                val action =
+                    FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(
+                        vacancy
+                    )
+                delay(300)
+                findNavController().navigate(action)
+                helpScopeReference.cardScopeTurnButton = false
+            } else if (!vacancy.isFavorite && helpScopeReference.cardScopeTurnButton) {
+                mainViewModel.deleteVacancy(vacancy)
+                MainActivity.helpScopeReference3.elementDelete = true
+                addElement = false
+
+                val action =
+                    FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(
+                        vacancy
+                    )
+                delay(300)
+                findNavController().navigate(action)
+                helpScopeReference.cardScopeTurnButton = false
+            } else if (!vacancy.isFavorite && !helpScopeReference.cardScopeTurnButton) {
+                mainViewModel.deleteVacancy(vacancy)
+                MainActivity.helpScopeReference3.elementDelete = true
+                addElement = false
+            } else {
+                mainViewModel.saveInFavorite(vacancy)
+                addElement = true
+                MainActivity.helpScopeReference3.elementDelete = false
+            }
         }
     }
 }

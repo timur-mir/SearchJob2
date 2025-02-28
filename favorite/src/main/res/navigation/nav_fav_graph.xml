@@ -16,8 +16,11 @@
         android:id="@+id/favoriteFragmentDetail"
         android:name="home.product.favorite.presentation.FavoriteFragmentDetail"
         android:label="FavoriteFragmentDetail">
+
     <argument
         android:name="aboutVacancy"
         app:argType="home.product.core.database.MainEntity" />
     </fragment>
+    <dialog  android:id="@+id/responseFavoriteDialogFragment"
+        android:name="home.product.favorite.presentation.ResponseFavoriteDialogFragment"/>
 </navigation>

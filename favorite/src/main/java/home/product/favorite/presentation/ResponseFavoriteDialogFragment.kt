@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import home.product.favorite.R
 import home.product.favorite.databinding.FragmentResponseFavoriteDialogBinding
 
-class ResponseFavoriteDialogFragment : DialogFragment() {
+class ResponseFavoriteDialogFragment :BottomSheetDialogFragment() {
     private var _binding: FragmentResponseFavoriteDialogBinding? = null
     val binding get() = _binding!!
     override fun onCreateView(
@@ -33,8 +34,10 @@ class ResponseFavoriteDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.responseLatterD.setOnClickListener {
-            binding.responseLatterD.visibility = View.GONE
-            binding.editResponseLatterD.visibility = View.VISIBLE
+            binding.responseLatterD.visibility=View.GONE
+            binding.editResponseLatterD.visibility=View.VISIBLE
+            binding.editResponseLatterD.requestFocus()
+            binding.editResponseLatterD.isCursorVisible=true
         }
         binding.responseClickButtonDialogD.setOnClickListener {
             dismiss()

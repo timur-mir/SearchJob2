@@ -34,7 +34,7 @@ class TemporaryJobAdapter (private val OnItemClick: (link: String) -> Unit):
         payloads: MutableList<Any>
     ) {
         with(holder.binding) {
-          temporaryJob.text = item.title.toString()
+          temporaryJob.text = item.title.toString().trim()
             holder.binding.root.setOnClickListener {
                 OnItemClick(item.link.toString())
             }
