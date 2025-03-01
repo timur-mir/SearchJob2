@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import home.product.searchjob2.App
+import home.product.searchjob2.MainObject
 import home.product.searchjob2.presentation.MainActivity
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.addElement
 import home.product.vacancies.data.utilits.ItemOffsetDecoration
@@ -52,6 +53,7 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        MainObject.addingElement = MainObject.addingElement-1
         with(binding.fullVacancies) {
             adapter = vacanciesAdapter
             setHasFixedSize(true)
@@ -98,6 +100,7 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
             if (vacancy.isFavorite && helpScopeReference.cardScopeTurnButton) {
                 mainViewModel.saveInFavorite(vacancy)
                 addElement = true
+                MainObject.addingElement = MainObject.addingElement +1
                 MainActivity.helpScopeReference3.elementDelete = false
 
                 val action =
@@ -111,7 +114,7 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
                 mainViewModel.deleteVacancy(vacancy)
                 MainActivity.helpScopeReference3.elementDelete = true
                 addElement = false
-
+                MainObject.addingElement = MainObject.addingElement -1
                 val action =
                     FullVacanciesFragmentDirections.actionFullVacanciesFragmentToDetailFragment(
                         vacancy
@@ -122,10 +125,12 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
             } else if (!vacancy.isFavorite && !helpScopeReference.cardScopeTurnButton) {
                 mainViewModel.deleteVacancy(vacancy)
                 MainActivity.helpScopeReference3.elementDelete = true
+                MainObject.addingElement = MainObject.addingElement -1
                 addElement = false
             } else {
                 mainViewModel.saveInFavorite(vacancy)
                 addElement = true
+                MainObject.addingElement = MainObject.addingElement +1
                 MainActivity.helpScopeReference3.elementDelete = false
             }
         }

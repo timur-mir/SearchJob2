@@ -40,18 +40,26 @@ class VacanciesAdapter(private val OnClick: (VacanciesDto) -> Unit) :
             }
             if (item.isFavorite) {
                 isFavorite1.setImageResource(R.drawable.heart)
-            } else {
+             ////////////   При этом варианте тоже можно будет работать со списком более логичнее, как и в случае
+                    ////////// с тем ка описано в MainViewModel в рамках  комментированных полей
+//                item.isFavorite=false
+//                isFavorite1.setImageResource(R.drawable.heart2)
+            }
+            else {
                 isFavorite1.setImageResource(R.drawable.heart2)
             }
 
             isFavorite1.setOnClickListener {
-                helpScopeReference.turnButton = !helpScopeReference.turnButton
-                if (helpScopeReference.turnButton) {
+                if (item.isFavorite==false) {
                     isFavorite1.setImageResource(R.drawable.heart)
                     OnClick(item.copy(isFavorite = true))
-                } else {
+                    item.isFavorite=true
+                }
+            else
+                {
                     isFavorite1.setImageResource(R.drawable.heart2)
                     OnClick(item.copy(isFavorite = false))
+                    item.isFavorite=false
                 }
             }
 

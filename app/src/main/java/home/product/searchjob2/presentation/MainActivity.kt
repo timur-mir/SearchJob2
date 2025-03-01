@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import home.product.searchjob2.App
+import home.product.searchjob2.MainObject.addingElement
 import home.product.searchjob2.R
 import home.product.searchjob2.databinding.ActivityMainBinding
 import home.product.searchjob2.di.DaggerAppComponent
@@ -17,7 +18,6 @@ import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.add
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.bottomNavigationViewMainReference
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.elementDelete
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.favoriteCurrentElementSize
-import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.favoriteOldElementSize
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -99,18 +99,29 @@ class MainActivity : AppCompatActivity() {
 
         headViewModel.loadFavoriteVacancies()
         headViewModel.responseVacancies.observe(this@MainActivity) { list ->
-
-            favoriteCurrentElementSize = list.size
             if (elementDelete) {
                 val menuItemId = binding.panelNavigationMain.menu.getItem(1).itemId
                 val badge = binding.panelNavigationMain.getOrCreateBadge(menuItemId)
-                badge.isVisible = false
+                if (addingElement == 0) {
+                    badge.isVisible = false
+                } else {
+                    badge.isVisible = true
+                    badge.number = addingElement
+                }
+
             }
 
             if (addElement) {
                 val menuItemId = binding.panelNavigationMain.menu.getItem(1).itemId
                 val badge = binding.panelNavigationMain.getOrCreateBadge(menuItemId)
-                badge.isVisible = true
+                if (addingElement == 0) {
+                    badge.isVisible = false
+                }
+                else
+                {
+                    badge.isVisible = true
+                    badge.number = addingElement
+                }
             }
         }
     }
@@ -124,8 +135,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     object helpScopeReference3 {
+
         var favoriteCurrentElementSize = 0
-        var favoriteOldElementSize = 0
+        var favoriteOldAddElementSize = 0
+        var favoriteNewElementAddSize = 0
         var elementDelete = false
         var addElement = false
         lateinit var bottomNavigationViewMainReference: BottomNavigationView

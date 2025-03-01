@@ -22,4 +22,7 @@ class DataBaseRepository @Inject constructor(private val dao:MainDao) {
     suspend fun getAllVacancies()=withContext(scope.coroutineContext){
        dao.getAllVacancies()
     }
+    suspend fun existItem(id:String)=withContext(scope.coroutineContext)
+    { dao.existItem(id)}
+
 }

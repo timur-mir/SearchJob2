@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import home.product.core.database.MainEntity
 import home.product.core.database.repository.DataBaseRepository
+import home.product.searchjob2.MainObject
+import home.product.searchjob2.presentation.MainActivity
 import home.product.vacancies.data.mapToMainEntity
 import home.product.vacancies.domain.GetOffersWorkCompaniesUseCase
 import home.product.vacancies.domain.entities.OffersMain
@@ -15,7 +17,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor (
+class MainViewModel @Inject constructor(
     private val remoteMockRepo: GetOffersWorkCompaniesUseCase,
     val repository: DataBaseRepository
 ) : ViewModel() {
@@ -31,12 +33,13 @@ class MainViewModel @Inject constructor (
         data2
     )
     val responseOffersOffersMain = _responseOffersMain.asStateFlow()
-    fun saveInFavorite(favoriteVacance:VacanciesDto){
+    fun saveInFavorite(favoriteVacance: VacanciesDto) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.saveVacancies(favoriteVacance.mapToMainEntity())
         }
     }
-    fun deleteVacancy(vacancy: VacanciesDto){
+
+    fun deleteVacancy(vacancy: VacanciesDto) {
         viewModelScope.launch {
             repository.deleteVacancies(vacancy.title)
         }
@@ -46,9 +49,36 @@ class MainViewModel @Inject constructor (
         viewModelScope.launch {
 
             remoteMockRepo.getOffersVacancies { objectInfo ->
-               // launch {   repository.saveVacancies(objectInfo.vacancies[0].mapToMainEntity()) }
+              //  _responseOffersVacancies.value = objectInfo
+                objectInfo.vacancies.forEach {
+                    /////////
+                    // Это участок кода нужен для обработки флага iSFavorite появляюющегося
+                    // в списке при загрузке данных , как если бы сам пользователь отметил данную вакансию
+                    // Можно было бы также изменить флаг в адаптере iSFavorite на false  и нормально работать ссо списком
+                    // Но думаю так логичнее хотя и в этом варианте есть проблемы...
+                    if (it.isFavorite == true) {
+                        viewModelScope.launch {
+                            if (repository.existItem(it.id)) {
+                                val el1 =
+                                    objectInfo.vacancies[objectInfo.vacancies.indexOf(it)].copy(
+                                        isFavorite = false
+                                    )
+                                val el3 =el1
+                                objectInfo.vacancies-el1
+                                val el2 = objectInfo.vacancies.add(el3)
+                                _responseOffersVacancies.value = objectInfo
+                            } else {
+                                repository.saveVacancies(it.mapToMainEntity())
+                                MainActivity.helpScopeReference3.addElement = true
+                                MainObject.addingElement = MainObject.addingElement + 1
+                                _responseOffersVacancies.value = objectInfo
+                            }
+                        }
+                    }
+                    /////////
 
-                _responseOffersVacancies.value = objectInfo
+
+                }
                 val offersMain: MutableList<OffersMain> = mutableListOf(
                     OffersMain.VacanciesNear(
                         id = objectInfo.offers[0].id.toString(),

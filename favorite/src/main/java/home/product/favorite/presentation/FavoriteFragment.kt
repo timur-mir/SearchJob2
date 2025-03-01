@@ -15,6 +15,7 @@ import home.product.favorite.presentation.FavoriteFragment.helpScopeReference2.c
 import home.product.favorite.presentation.di.DaggerFavoriteComponent
 import home.product.favorite.presentation.utils.ItemOffsetDecoration
 import home.product.searchjob2.App
+import home.product.searchjob2.MainObject
 import home.product.searchjob2.presentation.MainActivity
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -73,10 +74,13 @@ class FavoriteFragment : Fragment() {
 
     private fun toDaoScope(vacancy: MainEntity) {
         if (vacancy.isFavorite) {
+            MainObject.addingElement = MainObject.addingElement -1
         } else {
             favoriteViewModel.deleteVacancy(vacancy)
             MainActivity.helpScopeReference3.elementDelete = true
+            MainObject.addingElement = MainObject.addingElement -1
         }
+
         if (cardScopeTurnButton && vacancy.isFavorite) {
             val action =
                 FavoriteFragmentDirections.actionFavoriteFragmentToFavoriteFragmentDetail(vacancy)

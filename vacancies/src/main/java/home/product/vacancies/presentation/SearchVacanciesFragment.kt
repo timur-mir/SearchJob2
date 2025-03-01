@@ -17,6 +17,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import home.product.core.database.di.CoreComponent
 import home.product.searchjob2.App.Companion.coreComponent
+import home.product.searchjob2.MainObject
+import home.product.searchjob2.MainObject.addingElement
 import home.product.searchjob2.presentation.MainActivity
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.addElement
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.elementDelete
@@ -66,6 +68,7 @@ lateinit var mainViewModel:MainViewModel
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        MainObject.addingElement = MainObject.addingElement-1
         with(binding.topOffers) {
             adapter = offersMainAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
@@ -104,7 +107,8 @@ lateinit var mainViewModel:MainViewModel
               mainViewModel.saveInFavorite(vacancy)
               addElement = true
               elementDelete = false
-
+         addingElement=addingElement+1
+              helpScopeReference.turnButton =false
               val action =
                   SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(
                       vacancy
@@ -116,7 +120,7 @@ lateinit var mainViewModel:MainViewModel
               mainViewModel.deleteVacancy(vacancy)
               elementDelete = true
               addElement = false
-
+         addingElement=addingElement-1
               val action =
                   SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(
                       vacancy
@@ -128,12 +132,14 @@ lateinit var mainViewModel:MainViewModel
          else if (!vacancy.isFavorite&&!cardScopeTurnButton) {
               mainViewModel.deleteVacancy(vacancy)
               elementDelete = true
+              addingElement=addingElement-1
               addElement = false
           }
           else
           {
               mainViewModel.saveInFavorite(vacancy)
               addElement = true
+              addingElement=addingElement+1
               elementDelete = false
           }
       }

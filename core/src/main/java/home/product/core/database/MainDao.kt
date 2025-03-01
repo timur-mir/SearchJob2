@@ -21,4 +21,6 @@ interface MainDao {
     @Query("DELETE FROM ${"favorite"} WHERE title= :vacancies")
     suspend  fun deleteOldInfo(vacancies: String)
 
+    @Query("SELECT EXISTS (SELECT * FROM ${"favorite"} WHERE id= :id)")
+    suspend fun existItem(id: String): Boolean
 }

@@ -17,7 +17,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_vertical"
-    android:backgroundTint="#222235"
+    android:backgroundTint="#222325"
     app:cardCornerRadius="8dp"
     app:strokeWidth="0dp">
         <androidx.constraintlayout.widget.ConstraintLayout

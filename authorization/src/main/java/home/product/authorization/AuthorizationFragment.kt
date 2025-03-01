@@ -36,14 +36,14 @@ class AuthorizationFragment : Fragment() {
         drawableRight=context?.let { AppCompatResources.getDrawable(it, R.drawable.close2) }
         binding.editField.addTextChangedListener(checkTextWatcher)
         binding.nextAction.setOnClickListener {
-            binding.nextAction.visibility=View.INVISIBLE
+
             if (Patterns.EMAIL_ADDRESS.matcher(binding.editField.text.toString())
                     .matches()
             ) {
+                binding.editField.visibility=View.INVISIBLE
                 val action =AuthorizationFragmentDirections.actionAuthorizationFragmentToConfirmationFragment(binding.editField.text.toString())
                findNavController().navigate(action)
             } else {
-                binding.editField.isEnabled = false
                 flagBackground=true
                 binding.editField.background=
                     AppCompatResources.getDrawable(requireContext(), R.drawable.search_shape)

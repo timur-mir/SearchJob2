@@ -38,4 +38,8 @@ class App : Application() {
             .build()
     }
 
+
+}
+object MainObject {
+    var addingElement=0
 }
