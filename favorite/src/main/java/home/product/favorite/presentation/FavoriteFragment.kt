@@ -74,7 +74,7 @@ class FavoriteFragment : Fragment() {
 
     private fun toDaoScope(vacancy: MainEntity) {
         if (vacancy.isFavorite) {
-            MainObject.addingElement = MainObject.addingElement -1
+            // MainObject.addingElement = MainObject.addingElement -1
         } else {
             favoriteViewModel.deleteVacancy(vacancy)
             MainActivity.helpScopeReference3.elementDelete = true
