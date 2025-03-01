@@ -68,7 +68,7 @@ lateinit var mainViewModel:MainViewModel
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        MainObject.addingElement = MainObject.addingElement-1
+      MainObject.addingElement=0
         with(binding.topOffers) {
             adapter = offersMainAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
