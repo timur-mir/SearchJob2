@@ -122,10 +122,16 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
                 findNavController().navigate(action)
                 helpScopeReference.cardScopeTurnButton = false
             } else if (!vacancy.isFavorite && !helpScopeReference.cardScopeTurnButton) {
-                mainViewModel.deleteVacancy(vacancy)
-                MainActivity.helpScopeReference3.elementDelete = true
-                MainObject.addingElement = MainObject.addingElement -1
-                addElement = false
+                if (!vacancy.isFavorite && MainObject.addingElement == 0) {
+                    mainViewModel.deleteVacancy(vacancy)
+                    MainObject.addingElement = 0
+                    addElement = false
+                } else {
+                    mainViewModel.deleteVacancy(vacancy)
+                    MainObject.addingElement = MainObject.addingElement - 1
+                    MainActivity.helpScopeReference3.elementDelete = true
+                    addElement = false
+                }
             } else {
                 mainViewModel.saveInFavorite(vacancy)
                 addElement = true

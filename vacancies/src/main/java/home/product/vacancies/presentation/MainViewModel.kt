@@ -69,6 +69,7 @@ class MainViewModel @Inject constructor(
                                 objectInfo.vacancies.removeAt(indexEl)
                                 val el2 = objectInfo.vacancies.add(el3)
                                 _responseOffersVacancies.value = objectInfo
+//                                MainObject.addingElement = MainObject.addingElement + 1
                             } else {
                                 repository.saveVacancies(it.mapToMainEntity())
                                 MainActivity.helpScopeReference3.addElement = true

@@ -42,30 +42,35 @@ import javax.inject.Inject
 class SearchVacanciesFragment : Fragment() {
     private var _binding: FragmentSearchVacanciesBinding? = null
     val binding get() = _binding!!
+
     @Inject
-lateinit var mainViewModel:MainViewModel
+    lateinit var mainViewModel: MainViewModel
     private val vacanciesAdapter =
-        VacanciesAdapter { vacancy-> toDetail(vacancy)  }
+        VacanciesAdapter { vacancy -> toDetail(vacancy) }
     private val offersMainAdapter =
         OffersMainAdapter { link ->
-            Toast.makeText(requireContext(),"Переход на сайт:$link",Toast.LENGTH_LONG).show()
-            val browserIntent = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER)
-            browserIntent.data= Uri.parse(link)
+            Toast.makeText(requireContext(), "Переход на сайт:$link", Toast.LENGTH_LONG).show()
+            val browserIntent =
+                Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER)
+            browserIntent.data = Uri.parse(link)
             startActivity(browserIntent)
         }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSearchVacanciesBinding.inflate(inflater)
-        DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())). build().inject(this)
+        DaggerVacanciesComponent.builder().coreComponent(coreComponent(requireContext())).build()
+            .inject(this)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //        MainObject.addingElement = MainObject.addingElement-1
@@ -82,11 +87,13 @@ lateinit var mainViewModel:MainViewModel
             setHasFixedSize(true)
             addItemDecoration(ItemOffsetDecoration(requireContext()))
         }
-        binding.getAllVacancies.setOnClickListener{
-            val action = SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToFullVacanciesFragment()
+        binding.getAllVacancies.setOnClickListener {
+            val action =
+                SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToFullVacanciesFragment()
             findNavController().navigate(action)
         }
     }
+
     override fun onStart() {
         super.onStart()
         lifecycleScope.launch {
@@ -95,57 +102,62 @@ lateinit var mainViewModel:MainViewModel
                 offersMainAdapter.items = list
             }.launchIn(this)
             mainViewModel!!.responseOffersVacancies.onEach { list ->
-                val listVacancies=list.vacancies
-                binding.getAllVacancies.text="Ещё ${listVacancies.size-3} вакансии"
+                val listVacancies = list.vacancies
+                binding.getAllVacancies.text = "Ещё ${listVacancies.size - 3} вакансии"
                 vacanciesAdapter.submitList(listVacancies.take(3))
             }.launchIn(this)
         }
     }
-  private fun toDetail(vacancy: VacanciesDto) {
-      lifecycleScope.launch(Dispatchers.Main) {
-          if (vacancy.isFavorite&&cardScopeTurnButton) {
-              mainViewModel.saveInFavorite(vacancy)
-              addElement = true
-              elementDelete = false
-         addingElement=addingElement+1
-              helpScopeReference.turnButton =false
-              val action =
-                  SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(
-                      vacancy
-                  )
-              delay(300)
-              findNavController().navigate(action)
-              cardScopeTurnButton = false
-          } else if (!vacancy.isFavorite&&cardScopeTurnButton) {
-              mainViewModel.deleteVacancy(vacancy)
-              elementDelete = true
-              addElement = false
-         addingElement=addingElement-1
-              val action =
-                  SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(
-                      vacancy
-                  )
-              delay(300)
-              findNavController().navigate(action)
-              cardScopeTurnButton = false
-          }
-         else if (!vacancy.isFavorite&&!cardScopeTurnButton) {
-              mainViewModel.deleteVacancy(vacancy)
-              addingElement=addingElement-1
-              elementDelete = true
-              addElement = false
-          }
-          else
-          {
-              mainViewModel.saveInFavorite(vacancy)
-              addingElement=addingElement+1
-              addElement = true
-              elementDelete = false
-          }
-      }
-  }
+
+    private fun toDetail(vacancy: VacanciesDto) {
+        lifecycleScope.launch(Dispatchers.Main) {
+            if (vacancy.isFavorite && cardScopeTurnButton) {
+                mainViewModel.saveInFavorite(vacancy)
+                addElement = true
+                elementDelete = false
+                addingElement = addingElement + 1
+                helpScopeReference.turnButton = false
+                val action =
+                    SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(
+                        vacancy
+                    )
+                delay(300)
+                findNavController().navigate(action)
+                cardScopeTurnButton = false
+            } else if (!vacancy.isFavorite && cardScopeTurnButton) {
+                mainViewModel.deleteVacancy(vacancy)
+                elementDelete = true
+                addElement = false
+                addingElement = addingElement - 1
+                val action =
+                    SearchVacanciesFragmentDirections.actionSearchVacanciesFragmentToDetailFragment(
+                        vacancy
+                    )
+                delay(300)
+                findNavController().navigate(action)
+                cardScopeTurnButton = false
+            } else if (!vacancy.isFavorite && !cardScopeTurnButton) {
+                if (!vacancy.isFavorite && addingElement == 0) {
+                    mainViewModel.deleteVacancy(vacancy)
+                    addingElement = 1
+                    addElement = false
+                } else {
+                    mainViewModel.deleteVacancy(vacancy)
+                    addingElement = addingElement - 1
+                    elementDelete = true
+                    addElement = false
+                }
+            } else {
+                mainViewModel.saveInFavorite(vacancy)
+                addingElement = addingElement + 1
+                addElement = true
+                elementDelete = false
+            }
+        }
+    }
 }
+
 object helpScopeReference {
     var turnButton = false
-    var cardScopeTurnButton=false
+    var cardScopeTurnButton = false
 }
