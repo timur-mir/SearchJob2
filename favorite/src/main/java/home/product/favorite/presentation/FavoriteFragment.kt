@@ -66,7 +66,11 @@ class FavoriteFragment : Fragment() {
         favoriteViewModel.responseVacancies.observe(viewLifecycleOwner) { list ->
             if (list.size % 10 == 2 || list.size % 10 == 3 || list.size % 10 == 4) {
                 binding.vacanciesCount.text = "${list.size.toString()} вакансии"
-            } else if (list.size % 10 == 5 || list.size % 10 == 6 || list.size % 10 == 7 || list.size % 10 == 9 || list.size % 10 == 0) {
+            }
+            else if(list.size==0){
+                binding.vacanciesCount.text=""
+            }
+            else if (list.size % 10 == 5 || list.size % 10 == 6 || list.size % 10 == 7 || list.size % 10 == 9 || list.size % 10 == 0) {
                 binding.vacanciesCount.text = "${list.size.toString()} вакансий"
             } else {
                 if (list.size % 10 == 1) {
@@ -74,6 +78,7 @@ class FavoriteFragment : Fragment() {
                 }
             }
             vacanciesAdapter.submitList(list)
+
         }
     }
 

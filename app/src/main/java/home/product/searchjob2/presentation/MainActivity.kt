@@ -17,7 +17,6 @@ import home.product.searchjob2.di.DaggerAppComponent
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.addElement
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.bottomNavigationViewMainReference
 import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.elementDelete
-import home.product.searchjob2.presentation.MainActivity.helpScopeReference3.favoriteCurrentElementSize
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -108,9 +107,7 @@ class MainActivity : AppCompatActivity() {
                     badge.isVisible = true
                     badge.number = addingElement
                 }
-
             }
-
             if (addElement) {
                 val menuItemId = binding.panelNavigationMain.menu.getItem(1).itemId
                 val badge = binding.panelNavigationMain.getOrCreateBadge(menuItemId)
@@ -135,10 +132,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     object helpScopeReference3 {
-
-        var favoriteCurrentElementSize = 0
-        var favoriteOldAddElementSize = 0
-        var favoriteNewElementAddSize = 0
         var elementDelete = false
         var addElement = false
         lateinit var bottomNavigationViewMainReference: BottomNavigationView
