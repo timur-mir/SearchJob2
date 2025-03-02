@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             if (elementDelete) {
                 val menuItemId = binding.panelNavigationMain.menu.getItem(1).itemId
                 val badge = binding.panelNavigationMain.getOrCreateBadge(menuItemId)
-                if (addingElement == 0) {
+                if (addingElement == 0||addingElement<0) {
                     badge.isVisible = false
                 } else {
                     badge.isVisible = true

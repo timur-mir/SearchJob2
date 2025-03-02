@@ -55,6 +55,11 @@ class FavoriteFragment : Fragment() {
         if (badge.isVisible) {
             badge.isVisible = false
             MainActivity.helpScopeReference3.addElement = false
+            MainObject.addingElement = 0
+        }
+        else if(badge.isVisible==false){
+            MainActivity.helpScopeReference3.addElement = false
+            MainObject.addingElement = 0
         }
         favoriteViewModel.loadFavoriteVacancies()
         lifecycleScope.launch { }
@@ -74,11 +79,9 @@ class FavoriteFragment : Fragment() {
 
     private fun toDaoScope(vacancy: MainEntity) {
         if (vacancy.isFavorite) {
-            // MainObject.addingElement = MainObject.addingElement -1
         } else {
             favoriteViewModel.deleteVacancy(vacancy)
             MainActivity.helpScopeReference3.elementDelete = true
-            MainObject.addingElement = MainObject.addingElement -1
         }
 
         if (cardScopeTurnButton && vacancy.isFavorite) {

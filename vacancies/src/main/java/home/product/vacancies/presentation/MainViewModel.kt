@@ -53,18 +53,20 @@ class MainViewModel @Inject constructor(
                 objectInfo.vacancies.forEach {
                     /////////
                     // Это участок кода нужен для обработки флага iSFavorite появляюющегося
-                    // в списке при загрузке данных , как если бы сам пользователь отметил данную вакансию
-                    // Можно было бы также изменить флаг в адаптере iSFavorite на false  и нормально работать ссо списком
+                    // в списке при загрузке данных , как если бы сам пользователь отметил данную вакансию,
+                    // после чего она уже отображается в окне"Избранное" , а также в основном списке но без бейджа...
+                    // Можно было бы также изменить флаг в адаптере iSFavorite на false  и нормально работать со списком
                     // Но думаю так логичнее хотя и в этом варианте есть проблемы...
-                    if (it.isFavorite == true) {
+                    if (it.isFavorite) {
                         viewModelScope.launch {
                             if (repository.existItem(it.id)) {
                                 val el1 =
                                     objectInfo.vacancies[objectInfo.vacancies.indexOf(it)].copy(
-                                        isFavorite = false
+                                        isFavorite = true
                                     )
+                                val indexEl=objectInfo.vacancies.indexOf(it)
                                 val el3 =el1
-                                objectInfo.vacancies-el1
+                                objectInfo.vacancies.removeAt(indexEl)
                                 val el2 = objectInfo.vacancies.add(el3)
                                 _responseOffersVacancies.value = objectInfo
                             } else {

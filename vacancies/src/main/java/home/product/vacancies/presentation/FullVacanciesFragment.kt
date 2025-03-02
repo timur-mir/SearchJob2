@@ -53,7 +53,6 @@ class FullVacanciesFragment @Inject constructor() : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        MainObject.addingElement = MainObject.addingElement-1
         with(binding.fullVacancies) {
             adapter = vacanciesAdapter
             setHasFixedSize(true)

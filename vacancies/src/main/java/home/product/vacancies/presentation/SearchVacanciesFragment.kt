@@ -68,7 +68,7 @@ lateinit var mainViewModel:MainViewModel
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      MainObject.addingElement=0
+//        MainObject.addingElement = MainObject.addingElement-1
         with(binding.topOffers) {
             adapter = offersMainAdapter
             layoutManager = LinearLayoutManager(requireContext()).apply {
@@ -131,15 +131,15 @@ lateinit var mainViewModel:MainViewModel
           }
          else if (!vacancy.isFavorite&&!cardScopeTurnButton) {
               mainViewModel.deleteVacancy(vacancy)
-              elementDelete = true
               addingElement=addingElement-1
+              elementDelete = true
               addElement = false
           }
           else
           {
               mainViewModel.saveInFavorite(vacancy)
-              addElement = true
               addingElement=addingElement+1
+              addElement = true
               elementDelete = false
           }
       }
