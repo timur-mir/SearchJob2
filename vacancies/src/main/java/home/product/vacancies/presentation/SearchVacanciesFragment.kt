@@ -139,7 +139,7 @@ class SearchVacanciesFragment : Fragment() {
             } else if (!vacancy.isFavorite && !cardScopeTurnButton) {
                 if (!vacancy.isFavorite && addingElement == 0) {
                     mainViewModel.deleteVacancy(vacancy)
-                    addingElement = 1
+                    addingElement = 0
                     addElement = false
                 } else {
                     mainViewModel.deleteVacancy(vacancy)
