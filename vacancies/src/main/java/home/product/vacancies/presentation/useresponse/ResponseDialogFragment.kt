@@ -28,7 +28,8 @@ class ResponseDialogFragment: BottomSheetDialogFragment()  {
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT
         )
-        dialog?.window?.setGravity(Gravity.CENTER_HORIZONTAL)
+        dialog?.window?.setGravity(Gravity.TOP)
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -53,6 +53,7 @@
                 android:layout_width="120dp"
                 android:layout_height="19dp"
                 android:hint="UI/UX дизайнер"
+       android:layout_marginTop="6dp"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="16sp" />
@@ -91,6 +92,15 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/border"
+        android:layout_width="328dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#313234"/>
 
     <TextView
         android:id="@+id/response_latter"
