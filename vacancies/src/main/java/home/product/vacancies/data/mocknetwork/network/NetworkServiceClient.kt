@@ -17,7 +17,7 @@ class NetworkServiceClient @Inject constructor() {
         return Retrofit.Builder()
             .client(OkHttpClient.Builder().addInterceptor(MockInterceptor()).build())
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://www.mocky.io/v2/")
+            .baseUrl("https://www.yandex.ru")
             .build().create(ApiService::class.java)
 
     }
